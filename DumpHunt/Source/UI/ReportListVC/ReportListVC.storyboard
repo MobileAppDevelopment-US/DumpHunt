@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QS0-LB-gPf">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="YCO-je-GGa">
+            <objects>
+                <navigationController storyboardIdentifier="ReportListNVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QS0-LB-gPf" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Y1D-lw-q6x">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="QZh-rv-0Sa" kind="relationship" relationship="rootViewController" id="mwx-sN-FSo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="401-ye-Eym" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1419" y="-82"/>
+        </scene>
+        <!--Список отчётов-->
+        <scene sceneID="bbr-my-UCN">
+            <objects>
+                <viewController storyboardIdentifier="ReportListVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QZh-rv-0Sa" customClass="ReportListVC" customModule="DumpHunt" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pCz-W9-7Mo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XR1-BA-OVk">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="rDA-qo-7wD" firstAttribute="bottom" secondItem="XR1-BA-OVk" secondAttribute="bottom" id="0qj-uH-tlA"/>
+                            <constraint firstItem="XR1-BA-OVk" firstAttribute="leading" secondItem="rDA-qo-7wD" secondAttribute="leading" id="OsT-ba-nXF"/>
+                            <constraint firstItem="XR1-BA-OVk" firstAttribute="top" secondItem="rDA-qo-7wD" secondAttribute="top" id="Ygi-Vk-SuY"/>
+                            <constraint firstItem="rDA-qo-7wD" firstAttribute="trailing" secondItem="XR1-BA-OVk" secondAttribute="trailing" id="bG3-aK-CnW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="rDA-qo-7wD"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="list" selectedImage="listSelection" id="GNW-vM-tdV"/>
+                    <navigationItem key="navigationItem" title="Список отчётов" id="GSx-Rj-HRS"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="XR1-BA-OVk" id="tTr-zB-XPs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wGI-TA-8lb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-575.36231884057975" y="-82.366071428571431"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="list" width="25" height="25"/>
+        <image name="listSelection" width="25" height="25"/>
+    </resources>
+</document>

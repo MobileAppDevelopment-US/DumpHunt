@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ReportDetailsVC.swift
 //  DumpHunt
 //
 //  Created by Serik on 22.11.2019.
@@ -8,13 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ReportDetailsVC: BaseVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
     }
 
-
 }
-

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="151-9L-a6l">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tab BarVC-->
+        <scene sceneID="HOd-Vw-7b5">
+            <objects>
+                <tabBarController storyboardIdentifier="TabBarVC" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="151-9L-a6l" customClass="TabBarVC" customModule="DumpHunt" customModuleProvider="target" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="PWB-LL-1FK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="selectedIndex">
+                            <integer key="value" value="0"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <segue destination="PuV-AK-ich" kind="relationship" relationship="viewControllers" id="fhW-HL-p5m"/>
+                        <segue destination="rFk-qH-6qe" kind="relationship" relationship="viewControllers" id="iA7-hs-kp4"/>
+                        <segue destination="8wR-K8-KjG" kind="relationship" relationship="viewControllers" id="MdC-iR-O4V"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Ol-Zm-wF4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2279" y="248"/>
+        </scene>
+        <!--ReportListNVC-->
+        <scene sceneID="Rfr-7W-kfy">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ReportListVC" referencedIdentifier="ReportListNVC" id="rFk-qH-6qe" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" id="8Pn-HF-BMA">
+                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BjU-Mt-xpg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2278" y="680"/>
+        </scene>
+        <!--CreateReportNVC-->
+        <scene sceneID="Gpe-Wq-EL8">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CreateReportVC" referencedIdentifier="CreateReportNVC" id="PuV-AK-ich" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" id="NMP-Iw-Upr"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="exz-ot-a6F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1954" y="680"/>
+        </scene>
+        <!--AboutProjectNVC-->
+        <scene sceneID="gpd-wI-hgD">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AboutProjectVC" referencedIdentifier="AboutProjectNVC" id="8wR-K8-KjG" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="chat" selectedImage="chatSelected" id="Ze7-NU-TRy">
+                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gj1-ax-w4j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2642" y="680"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="chat" width="16" height="16"/>
+        <image name="chatSelected" width="16" height="16"/>
+    </resources>
+</document>

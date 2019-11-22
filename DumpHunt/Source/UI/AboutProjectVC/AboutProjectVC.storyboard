@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OBp-bx-eeS">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="ybX-sP-q62">
+            <objects>
+                <navigationController storyboardIdentifier="AboutProjectNVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OBp-bx-eeS" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="MnO-VR-bhg">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="RGN-rs-ZeW" kind="relationship" relationship="rootViewController" id="1f0-Os-G0G"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f0B-eI-bIu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1419" y="-82"/>
+        </scene>
+        <!--О проекте-->
+        <scene sceneID="eYH-u8-sye">
+            <objects>
+                <viewController storyboardIdentifier="AboutProjectVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RGN-rs-ZeW" customClass="AboutProjectVC" customModule="DumpHunt" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3P1-zr-j6z">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoLink" translatesAutoresizingMaskIntoConstraints="NO" id="6h2-wJ-Nbn">
+                                <rect key="frame" x="40" y="108" width="334" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="nzE-bU-mDC"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ezk-gH-Mti">
+                                <rect key="frame" x="20" y="178" width="374" height="635"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <mutableString key="text">Добро пожаловать на портал информационно-аналитического проекта «Ecolog29.ru»!
+
+«Ecolog29.ru» — это современная информационно-аналитическая платформа профессионального сообщества Поморья, куда входят общественники, эксперты, ученые-практики, просто неравнодушные к проблемам экологии граждане и равноудаленно федеральные, региональные и муниципальные органы власти.
+
+Наша задача – объединить профессиональное сообщество и всех неравнодушных к вопросам экологии, на одной платформе собрать и представить на обсуждение всех заинтересованных сторон ключевую информацию по экологической тематике: аналитика (по направлениям), официальная информация, от первого лица, новости, видео и фоторепортажи с мероприятий и т.д.
+
+Мы большую роль отводим освещению деятельности в нашей группе в VK. Огромное внимание отводится освещению деятельности общественных организаций, экологических молодежных формирований, в том числе и работающих в формате «активных социальных групп».
+
+Редакция проводит собственные расследования и предоставляет результаты на общественное обсуждение.</mutableString>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="7eo-KB-eSL" firstAttribute="bottom" secondItem="ezk-gH-Mti" secondAttribute="bottom" id="3oY-H0-4MX"/>
+                            <constraint firstItem="6h2-wJ-Nbn" firstAttribute="leading" secondItem="7eo-KB-eSL" secondAttribute="leading" constant="40" id="77A-OZ-ddB"/>
+                            <constraint firstItem="7eo-KB-eSL" firstAttribute="trailing" secondItem="6h2-wJ-Nbn" secondAttribute="trailing" constant="40" id="GP3-0s-S2t"/>
+                            <constraint firstItem="6h2-wJ-Nbn" firstAttribute="top" secondItem="7eo-KB-eSL" secondAttribute="top" constant="20" id="Ybd-7g-jSZ"/>
+                            <constraint firstItem="ezk-gH-Mti" firstAttribute="leading" secondItem="7eo-KB-eSL" secondAttribute="leading" constant="20" id="j5r-5X-yGE"/>
+                            <constraint firstItem="ezk-gH-Mti" firstAttribute="top" secondItem="6h2-wJ-Nbn" secondAttribute="bottom" constant="20" id="xya-KL-ski"/>
+                            <constraint firstItem="7eo-KB-eSL" firstAttribute="trailing" secondItem="ezk-gH-Mti" secondAttribute="trailing" constant="20" id="yFK-1Z-4vr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7eo-KB-eSL"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="about" selectedImage="aboutSelected" id="cih-9C-tyN"/>
+                    <navigationItem key="navigationItem" title="О проекте" id="2y9-WW-N6B"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9mm-Ex-krn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-575.36231884057975" y="-82.366071428571431"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="about" width="25" height="25"/>
+        <image name="aboutSelected" width="25" height="25"/>
+        <image name="logoLink" width="721" height="90"/>
+    </resources>
+</document>
