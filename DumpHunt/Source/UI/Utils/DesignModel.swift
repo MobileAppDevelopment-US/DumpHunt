@@ -12,6 +12,9 @@ typealias Design = DesignModel
 
 open class DesignModel {
     
+     static let keyLatitude: String = "keyLatitude"
+     static let keyLongitude: String = "keyLongitude"
+    
     // Fonts Size
     
     static let small: CGFloat = 13.0
@@ -25,7 +28,8 @@ open class DesignModel {
     
     public static var black: UIColor { return .black }
     public static var white: UIColor { return .white }
-    
+    public static var lightGray: UIColor { return .lightGray }
+
     public static var blue: UIColor { return UIColor(red: 5.0/255.0,
                                                      green: 124.0/255.0,
                                                      blue: 255.0/255.0,
