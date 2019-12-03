@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
+import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
+        GMSServices.provideAPIKey("AIzaSyCZeTgAhBUfnrL63b4KY2BSz1TLoZanlnU")
+        IQKeyboardManager.shared.enable = true
         openFirstScreen()
         return true
     }

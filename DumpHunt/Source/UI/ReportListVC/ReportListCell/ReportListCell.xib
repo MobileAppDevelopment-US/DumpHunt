@@ -18,14 +18,14 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hunt" translatesAutoresizingMaskIntoConstraints="NO" id="TuC-i6-w5G">
-                        <rect key="frame" x="20" y="10" width="80" height="80"/>
+                        <rect key="frame" x="15" y="10" width="80" height="80"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="TuC-i6-w5G" secondAttribute="height" multiplier="1:1" id="RZZ-Uj-VhJ"/>
                             <constraint firstAttribute="width" constant="80" id="jFu-Zh-7MM"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Fb-gd-WRb">
-                        <rect key="frame" x="110" y="12" width="186" height="77"/>
+                        <rect key="frame" x="105" y="12" width="191" height="77"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -42,7 +42,7 @@
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="06I-Ks-WVv" secondAttribute="trailing" id="48c-pH-epr"/>
                     <constraint firstItem="5Fb-gd-WRb" firstAttribute="leading" secondItem="TuC-i6-w5G" secondAttribute="trailing" constant="10" id="EuG-vn-xST"/>
-                    <constraint firstItem="TuC-i6-w5G" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Jdt-5i-rO4"/>
+                    <constraint firstItem="TuC-i6-w5G" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Jdt-5i-rO4"/>
                     <constraint firstItem="5Fb-gd-WRb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="KnN-D7-Ch4"/>
                     <constraint firstAttribute="bottom" secondItem="06I-Ks-WVv" secondAttribute="bottom" id="UgF-la-wxT"/>
                     <constraint firstAttribute="trailing" secondItem="5Fb-gd-WRb" secondAttribute="trailing" constant="24" id="XY3-ok-nG4"/>
