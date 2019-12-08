@@ -38,8 +38,24 @@
                                     <constraint firstAttribute="height" constant="200" id="66d-78-daw"/>
                                 </constraints>
                             </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ФИО (опционально)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g3V-DN-vSb">
+                                <rect key="frame" x="15" y="403" width="384" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="J9Z-80-GrI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Номер телефона, email (опционально)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="du8-v1-S7D">
+                                <rect key="frame" x="15" y="452" width="384" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="evk-AE-6vr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="N8n-P7-wrj" customClass="KMPlaceholderTextView" customModule="KMPlaceholderTextView">
-                                <rect key="frame" x="15" y="503" width="384" height="100"/>
+                                <rect key="frame" x="15" y="501" width="384" height="100"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="xnf-FD-isr"/>
@@ -48,40 +64,49 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="КОММЕНТАРИИ (погода, интересные детали)"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Комментарии - описание свалки, интересные детали (опционально)"/>
                                 </userDefinedRuntimeAttributes>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w3L-jP-kjb">
-                                <rect key="frame" x="15" y="633" width="60" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="ONQ-0z-rwm"/>
-                                    <constraint firstAttribute="width" constant="60" id="uqo-KW-9tu"/>
-                                </constraints>
-                                <state key="normal" title="GPS"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLZ-HE-OJG">
-                                <rect key="frame" x="339" y="633" width="60" height="30"/>
+                                <rect key="frame" x="50" y="333" width="314" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="BlN-oe-oVM"/>
-                                    <constraint firstAttribute="width" constant="60" id="ajm-o3-HOd"/>
+                                    <constraint firstAttribute="height" constant="40" id="BlN-oe-oVM"/>
                                 </constraints>
-                                <state key="normal" title="Map"/>
+                                <state key="normal" title="Указать место на карте"/>
                                 <connections>
                                     <action selector="mapActionButton:" destination="64H-KZ-gdt" eventType="touchUpInside" id="ndm-pm-cUO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CxY-k8-bNW">
+                                <rect key="frame" x="50" y="631" width="314" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="jBj-Kk-pdS"/>
+                                </constraints>
+                                <state key="normal" title="Отправить отчёт"/>
+                                <connections>
+                                    <action selector="postReportActionButton:" destination="64H-KZ-gdt" eventType="touchUpInside" id="RYc-iP-R23"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="CxY-k8-bNW" firstAttribute="leading" secondItem="jKo-E6-XP6" secondAttribute="leading" constant="50" id="0AT-Ix-MoA"/>
+                            <constraint firstItem="du8-v1-S7D" firstAttribute="leading" secondItem="jKo-E6-XP6" secondAttribute="leading" constant="15" id="1GO-N0-cHn"/>
+                            <constraint firstItem="jKo-E6-XP6" firstAttribute="trailing" secondItem="CxY-k8-bNW" secondAttribute="trailing" constant="50" id="5Ju-Q0-yx0"/>
+                            <constraint firstItem="N8n-P7-wrj" firstAttribute="top" secondItem="du8-v1-S7D" secondAttribute="bottom" constant="15" id="8GZ-do-h6H"/>
                             <constraint firstItem="PeO-kR-jVd" firstAttribute="top" secondItem="jKo-E6-XP6" secondAttribute="top" constant="15" id="DsR-hM-jcM"/>
+                            <constraint firstItem="PLZ-HE-OJG" firstAttribute="leading" secondItem="jKo-E6-XP6" secondAttribute="leading" constant="50" id="JPi-a3-Oom"/>
                             <constraint firstItem="jKo-E6-XP6" firstAttribute="trailing" secondItem="N8n-P7-wrj" secondAttribute="trailing" constant="15" id="McS-A2-k21"/>
-                            <constraint firstItem="w3L-jP-kjb" firstAttribute="leading" secondItem="jKo-E6-XP6" secondAttribute="leading" constant="15" id="YIn-dA-cFi"/>
-                            <constraint firstItem="jKo-E6-XP6" firstAttribute="trailing" secondItem="PLZ-HE-OJG" secondAttribute="trailing" constant="15" id="fLI-GU-RrA"/>
-                            <constraint firstItem="w3L-jP-kjb" firstAttribute="top" secondItem="N8n-P7-wrj" secondAttribute="bottom" constant="30" id="jKO-zj-OLQ"/>
-                            <constraint firstItem="N8n-P7-wrj" firstAttribute="top" secondItem="PeO-kR-jVd" secondAttribute="bottom" constant="200" id="lhM-we-6DS"/>
+                            <constraint firstItem="PLZ-HE-OJG" firstAttribute="top" secondItem="PeO-kR-jVd" secondAttribute="bottom" constant="30" id="OaT-LA-wQf"/>
+                            <constraint firstItem="jKo-E6-XP6" firstAttribute="trailing" secondItem="g3V-DN-vSb" secondAttribute="trailing" constant="15" id="SuY-mk-u1D"/>
+                            <constraint firstItem="g3V-DN-vSb" firstAttribute="leading" secondItem="jKo-E6-XP6" secondAttribute="leading" constant="15" id="aU5-Oi-lXw"/>
+                            <constraint firstItem="CxY-k8-bNW" firstAttribute="top" secondItem="N8n-P7-wrj" secondAttribute="bottom" constant="30" id="bPs-I3-6MO"/>
+                            <constraint firstItem="jKo-E6-XP6" firstAttribute="trailing" secondItem="du8-v1-S7D" secondAttribute="trailing" constant="15" id="cLd-bb-ilB"/>
+                            <constraint firstItem="jKo-E6-XP6" firstAttribute="trailing" secondItem="PLZ-HE-OJG" secondAttribute="trailing" constant="50" id="fLI-GU-RrA"/>
                             <constraint firstItem="jKo-E6-XP6" firstAttribute="trailing" secondItem="PeO-kR-jVd" secondAttribute="trailing" constant="15" id="nGi-9D-jeD"/>
                             <constraint firstItem="PeO-kR-jVd" firstAttribute="leading" secondItem="jKo-E6-XP6" secondAttribute="leading" constant="15" id="vOr-nc-tbx"/>
-                            <constraint firstItem="PLZ-HE-OJG" firstAttribute="centerY" secondItem="w3L-jP-kjb" secondAttribute="centerY" id="wAT-Zf-v10"/>
+                            <constraint firstItem="g3V-DN-vSb" firstAttribute="top" secondItem="PLZ-HE-OJG" secondAttribute="bottom" constant="30" id="xFE-Dq-dvg"/>
+                            <constraint firstItem="du8-v1-S7D" firstAttribute="top" secondItem="g3V-DN-vSb" secondAttribute="bottom" constant="15" id="xbk-z6-kXN"/>
                             <constraint firstItem="N8n-P7-wrj" firstAttribute="leading" secondItem="jKo-E6-XP6" secondAttribute="leading" constant="15" id="yjx-6O-uHO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jKo-E6-XP6"/>
@@ -91,8 +116,11 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="descriptionTextView" destination="N8n-P7-wrj" id="sxM-wU-6tW"/>
+                        <outlet property="descriptionTextView" destination="N8n-P7-wrj" id="TJa-Oo-5mQ"/>
                         <outlet property="dumpImageView" destination="PeO-kR-jVd" id="J7D-Qc-BpK"/>
+                        <outlet property="fioTextField" destination="g3V-DN-vSb" id="hZ6-5v-K4I"/>
+                        <outlet property="phoneTextField" destination="du8-v1-S7D" id="uvu-F9-inR"/>
+                        <outlet property="postReportButton" destination="CxY-k8-bNW" id="ndl-Fu-yGv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tdi-zA-TdA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

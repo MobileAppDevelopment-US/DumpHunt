@@ -10,6 +10,8 @@ import UIKit
 
 class ReportDetailsVC: BaseVC {
 
+    // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

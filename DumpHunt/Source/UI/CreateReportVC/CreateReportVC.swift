@@ -10,28 +10,51 @@ import UIKit
 import CoreLocation
 
 class CreateReportVC: BaseVC {
-
+    
     @IBOutlet var dumpImageView: UIImageView!
     @IBOutlet var descriptionTextView: UITextView!
-
-    let locationManager = CLLocationManager()
-    var isLocation: Bool = true
-   // var location = CLLocation()
-
+    @IBOutlet var fioTextField: UITextField!
+    @IBOutlet var phoneTextField: UITextField!
+    @IBOutlet var postReportButton: UIButton!
+    
+    var report = Report() {
+        didSet {
+            if report.image != nil && report.latitude != nil && report.longitude != nil {
+                selectedNextButton()
+            } else {
+                notSelectedtButton()
+            }
+        }
+    }
+    
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         configure()
         createTapGestureRecognizer()
+        notSelectedtButton()
     }
-        
+    
     override func viewWillAppear(_ animated: Bool) {
         super .viewWillAppear(animated)
         
-        isLocation = true
         setHiddenBlackArrowButton()
     }
-
+    
+    // Mark: Action
+    
+    @IBAction func mapActionButton(_ sender: UIButton) {
+        showGoogleMapsVC()
+    }
+    
+    @IBAction func postReportActionButton(_ sender: UIButton) {
+        Utill.printInTOConsole(">>> Report - \(report)")
+    }
+    
+    // Mark: Mehods
+    
     private func configure() {
         dumpImageView.layer.cornerRadius = 10.0
         dumpImageView.layer.masksToBounds = true
@@ -41,56 +64,42 @@ class CreateReportVC: BaseVC {
         descriptionTextView.layer.borderWidth = 1
         descriptionTextView.layer.borderColor = Design.lightGray.cgColor
         
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
+        postReportButton.layer.cornerRadius = postReportButton.frame.size.height / 2
+        postReportButton.layer.masksToBounds = true
         
-
+        descriptionTextView.delegate = self
+        fioTextField.delegate = self
+        phoneTextField.delegate = self
     }
     
-    @IBAction func mapActionButton(_ sender: UIButton) {
-        getLocation()
-    }
-    
-    private func getLocation() {
+    func notSelectedtButton() {
         
-        let showError = {
-            let alert  = UIAlertController(title: "Warning",
-                                           message: "",
-                                           preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK",
-                                          style: .default,
-                                          handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
-        
-        guard CLLocationManager.locationServicesEnabled() else {
-            showError()
-            return
-        }
-
-        switch CLLocationManager.authorizationStatus() {
-        case .denied, .notDetermined, .restricted:
-            showError()
-        default:
-            locationManager.startUpdatingLocation()
-        }
+        postReportButton.backgroundColor = Design.gray
+        postReportButton.tintColor = Design.grayText
+        //nextButton.titleLabel?.font = UIFont(name: Design.avenirBold, size: Design.medium)
+        postReportButton.isEnabled = false
     }
-
-
     
     private func createTapGestureRecognizer() {
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(showAlert))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(showSelectPhotoAlert))
         dumpImageView.isUserInteractionEnabled = true
         dumpImageView.addGestureRecognizer(tapGestureRecognizer)
     }
+    
+    func selectedNextButton() {
+        
+        postReportButton.backgroundColor = Design.blue
+        postReportButton.tintColor = Design.white
+        postReportButton.isEnabled = true
+    }
+    
 }
 
 // MARK: - UIImagePickerControllerDelegate
 
 extension CreateReportVC: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
-    @objc func showAlert() {
+    @objc func showSelectPhotoAlert() {
         
         let alert = UIAlertController(title: "Выберите источник фото",
                                       message: "",
@@ -99,13 +108,13 @@ extension CreateReportVC: UINavigationControllerDelegate, UIImagePickerControlle
         alert.addAction(UIAlertAction(title: "Камера",
                                       style: .default,
                                       handler: {(action: UIAlertAction) in
-            self.getImage(fromSourceType: .camera)
+                                        self.getImage(fromSourceType: .camera)
         }))
         
         alert.addAction(UIAlertAction(title: "Альбом",
                                       style: .default,
                                       handler: {(action: UIAlertAction) in
-                self.getImage(fromSourceType: .photoLibrary)
+                                        self.getImage(fromSourceType: .photoLibrary)
         }))
         
         alert.addAction(UIAlertAction(title: "Отменить",
@@ -116,7 +125,7 @@ extension CreateReportVC: UINavigationControllerDelegate, UIImagePickerControlle
     }
     
     @objc func getImage(fromSourceType: UIImagePickerController.SourceType) {
-
+        
         if UIImagePickerController.isSourceTypeAvailable(fromSourceType) {
             let myPickerController = UIImagePickerController()
             myPickerController.delegate = self;
@@ -124,7 +133,7 @@ extension CreateReportVC: UINavigationControllerDelegate, UIImagePickerControlle
             self.present(myPickerController, animated: true, completion: nil)
         }
     }
-
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -132,30 +141,12 @@ extension CreateReportVC: UINavigationControllerDelegate, UIImagePickerControlle
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let chosenImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-        dumpImageView.image = chosenImage
+        let orientationFixedImage = chosenImage.fixOrientation()
+        report.image = orientationFixedImage
+        dumpImageView.image = orientationFixedImage
         dismiss(animated:true, completion: nil)
     }
-}
-
-// MARK: - CLLocationManagerDelegate
-
-extension CreateReportVC: CLLocationManagerDelegate {
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        manager.stopUpdatingLocation()
-        //Utill.printInTOConsole(">> locations- \(locations)")
-        
-        if isLocation {
-            Utill.latitude = locations.first?.coordinate.latitude
-            Utill.longitude = locations.first?.coordinate.longitude
-            showGoogleMapsVC()
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
-    }
 }
 
 // MARK: - Transition
@@ -164,22 +155,62 @@ extension CreateReportVC {
     
     private func showGoogleMapsVC() {
         
-        let loginVCStoryboard = UIStoryboard(name: "GoogleMapsVC", bundle: nil)
-        guard let vc = loginVCStoryboard.instantiateViewController(withIdentifier: "GoogleMapsVC") as? GoogleMapsVC else {
+        let storyboard = UIStoryboard(name: "GoogleMapsVC", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "GoogleMapsVC") as? GoogleMapsVC else {
             return
         }
-        isLocation = false
+        vc.delegate = self
         pushViewController(vc)
     }
     
 }
 
+// MARK: - CreateReportVCDelegate
 
-//extension DetailsViewController: UITextViewDelegate {
-//
-//    func textViewDidEndEditing(_ textView: UITextView) {
-//
-//
-//    }
-//
-//}
+extension CreateReportVC: CreateReportVCDelegate {
+    
+    func setCurrentCoordinate(latitude: Double?, longitude: Double?) {
+        report.latitude = latitude
+        report.longitude = longitude
+    }
+    
+}
+
+
+// MARK: - UITextViewDelegate
+
+extension CreateReportVC: UITextViewDelegate {
+    
+    func textViewDidChange(_ textView: UITextView) {
+        report.comment = textView.text
+    }
+    
+}
+
+// MARK: - UITextFieldDelegate
+
+extension CreateReportVC: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
+        
+        guard let textFieldText = textField.text,
+            let textRange = Range(range, in: textFieldText) else {
+                return false
+        }
+        let text = textFieldText.replacingCharacters(in: textRange, with: string)
+        
+        if textField == fioTextField {
+            report.fio = text
+        }
+        
+        if textField == phoneTextField {
+            report.phone = text
+        }
+        
+        return true
+    }
+    
+}
+
+

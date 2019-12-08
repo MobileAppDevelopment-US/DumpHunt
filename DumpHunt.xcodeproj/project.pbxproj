@@ -16,6 +16,8 @@
 		CE31D9342387D15100E6FF2D /* TabBarVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE31D9332387D15100E6FF2D /* TabBarVC.storyboard */; };
 		CE31D9372387D1FB00E6FF2D /* ReportListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE31D9362387D1FB00E6FF2D /* ReportListVC.swift */; };
 		CE31D9392387D20600E6FF2D /* ReportListVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE31D9382387D20600E6FF2D /* ReportListVC.storyboard */; };
+		CE5ED0BB239D26D5004D8897 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5ED0BA239D26D5004D8897 /* Report.swift */; };
+		CE5ED0BD239D28A9004D8897 /* Extensions+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5ED0BC239D28A9004D8897 /* Extensions+UIImage.swift */; };
 		CEB1B07C238851B60028D02C /* Utill.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB1B07B238851B60028D02C /* Utill.swift */; };
 		CEB1B07E238855150028D02C /* GoogleMapsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB1B07D238855150028D02C /* GoogleMapsVC.swift */; };
 		CEB1B0802388552A0028D02C /* GoogleMapsVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEB1B07F2388552A0028D02C /* GoogleMapsVC.storyboard */; };
@@ -47,6 +49,8 @@
 		CE31D9332387D15100E6FF2D /* TabBarVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabBarVC.storyboard; sourceTree = "<group>"; };
 		CE31D9362387D1FB00E6FF2D /* ReportListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportListVC.swift; sourceTree = "<group>"; };
 		CE31D9382387D20600E6FF2D /* ReportListVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReportListVC.storyboard; sourceTree = "<group>"; };
+		CE5ED0BA239D26D5004D8897 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
+		CE5ED0BC239D28A9004D8897 /* Extensions+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UIImage.swift"; sourceTree = "<group>"; };
 		CEB1B07B238851B60028D02C /* Utill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utill.swift; sourceTree = "<group>"; };
 		CEB1B07D238855150028D02C /* GoogleMapsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsVC.swift; sourceTree = "<group>"; };
 		CEB1B07F2388552A0028D02C /* GoogleMapsVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoogleMapsVC.storyboard; sourceTree = "<group>"; };
@@ -134,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				CE31D92B2387CFF200E6FF2D /* UI */,
+				CE5ED0B9239D26BE004D8897 /* Model */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -141,9 +146,10 @@
 		CE31D92B2387CFF200E6FF2D /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				CEBC26172387DBC600738CB7 /* Base */,
+				CEBC26172387DBC600738CB7 /* BaseVC */,
 				CE31D92C2387D00200E6FF2D /* TabBarVC */,
 				CEBC26122387D2DF00738CB7 /* CreateReportVC */,
+				CE5ED0B8239D20F3004D8897 /* GoogleMapsVC */,
 				CE31D9352387D19700E6FF2D /* ReportListVC */,
 				CEBC261F2387E68B00738CB7 /* ReportVC */,
 				CEBC26262387E87200738CB7 /* AboutProjectVC */,
@@ -167,6 +173,7 @@
 				CE31D9302387D09100E6FF2D /* DesignModel.swift */,
 				CEB1B07B238851B60028D02C /* Utill.swift */,
 				CEB1B081238872A80028D02C /* Singleton.swift */,
+				CE5ED0BC239D28A9004D8897 /* Extensions+UIImage.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -181,23 +188,38 @@
 			path = ReportListVC;
 			sourceTree = "<group>";
 		};
+		CE5ED0B8239D20F3004D8897 /* GoogleMapsVC */ = {
+			isa = PBXGroup;
+			children = (
+				CEB1B07D238855150028D02C /* GoogleMapsVC.swift */,
+				CEB1B07F2388552A0028D02C /* GoogleMapsVC.storyboard */,
+			);
+			path = GoogleMapsVC;
+			sourceTree = "<group>";
+		};
+		CE5ED0B9239D26BE004D8897 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE5ED0BA239D26D5004D8897 /* Report.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		CEBC26122387D2DF00738CB7 /* CreateReportVC */ = {
 			isa = PBXGroup;
 			children = (
 				CEBC26132387D2FD00738CB7 /* CreateReportVC.swift */,
 				CEBC26152387D30500738CB7 /* CreateReportVC.storyboard */,
-				CEB1B07D238855150028D02C /* GoogleMapsVC.swift */,
-				CEB1B07F2388552A0028D02C /* GoogleMapsVC.storyboard */,
 			);
 			path = CreateReportVC;
 			sourceTree = "<group>";
 		};
-		CEBC26172387DBC600738CB7 /* Base */ = {
+		CEBC26172387DBC600738CB7 /* BaseVC */ = {
 			isa = PBXGroup;
 			children = (
 				CEBC26182387DBE000738CB7 /* BaseVC.swift */,
 			);
-			path = Base;
+			path = BaseVC;
 			sourceTree = "<group>";
 		};
 		CEBC261A2387E39000738CB7 /* ReportListCell */ = {
@@ -374,6 +396,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE5ED0BD239D28A9004D8897 /* Extensions+UIImage.swift in Sources */,
 				CEBC26252387E86B00738CB7 /* AboutProjectVC.swift in Sources */,
 				CEBC26142387D2FD00738CB7 /* CreateReportVC.swift in Sources */,
 				CE31D9312387D09100E6FF2D /* DesignModel.swift in Sources */,
@@ -383,6 +406,7 @@
 				CE31D9152387CEC200E6FF2D /* AppDelegate.swift in Sources */,
 				CEB1B07C238851B60028D02C /* Utill.swift in Sources */,
 				CEBC26212387E6AE00738CB7 /* ReportDetailsVC.swift in Sources */,
+				CE5ED0BB239D26D5004D8897 /* Report.swift in Sources */,
 				CE31D92E2387D02F00E6FF2D /* TabBarVC.swift in Sources */,
 				CEBC26192387DBE000738CB7 /* BaseVC.swift in Sources */,
 				CE31D9172387CEC200E6FF2D /* SceneDelegate.swift in Sources */,
@@ -523,8 +547,9 @@
 			baseConfigurationReference = 05FE2D71F6449EF296E3CE82 /* Pods-DumpHunt.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3TX466DVBY;
 				INFOPLIST_FILE = "$(SRCROOT)/DumpHunt/SupportingFile/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -544,8 +569,9 @@
 			baseConfigurationReference = 7248B284B09D7982EE469B3B /* Pods-DumpHunt.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3TX466DVBY;
 				INFOPLIST_FILE = "$(SRCROOT)/DumpHunt/SupportingFile/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
