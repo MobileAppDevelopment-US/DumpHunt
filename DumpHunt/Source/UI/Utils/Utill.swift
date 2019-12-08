@@ -10,17 +10,17 @@ import Foundation
 
 class Utill: NSObject {
     
-    private static let userDefaults = UserDefaults.standard
-    
-    public static var longitude : Double? {
-        get { return userDefaults.double(forKey: Design.keyLongitude) }
-        set { userDefaults.setValue(newValue, forKey: Design.keyLongitude) }
-    }
-    
-    public static var latitude : Double? {
-        get { return userDefaults.double(forKey: Design.keyLatitude) }
-        set { userDefaults.setValue(newValue, forKey: Design.keyLatitude) }
-    }
+//    private static let userDefaults = UserDefaults.standard
+//    
+//    public static var longitude : Double? {
+//        get { return userDefaults.double(forKey: Design.keyLongitude) }
+//        set { userDefaults.setValue(newValue, forKey: Design.keyLongitude) }
+//    }
+//    
+//    public static var latitude : Double? {
+//        get { return userDefaults.double(forKey: Design.keyLatitude) }
+//        set { userDefaults.setValue(newValue, forKey: Design.keyLatitude) }
+//    }
     
     class func printInTOConsole(_ printData : Any) {
         #if DEBUG

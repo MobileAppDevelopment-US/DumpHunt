@@ -12,7 +12,8 @@ class ReportListVC: BaseVC {
 
     @IBOutlet weak var tableView: UITableView!
 
-    
+    // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,6 +27,8 @@ class ReportListVC: BaseVC {
         setHiddenBlackArrowButton()
     }
     
+    // Mark: Mehods
+
     private func configure() {
 
     }

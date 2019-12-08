@@ -10,6 +10,8 @@ import UIKit
 
 class AboutProjectVC: BaseVC {
 
+    // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,6 +24,8 @@ class AboutProjectVC: BaseVC {
         setHiddenBlackArrowButton()
     }
     
+    // Mark: Mehods
+
     private func configure() {
         
         

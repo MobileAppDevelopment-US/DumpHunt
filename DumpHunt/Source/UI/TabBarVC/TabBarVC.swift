@@ -10,12 +10,16 @@ import UIKit
 
 class TabBarVC: UITabBarController {
 
+    // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configure()
     }
     
+    // Mark: Mehods
+
     private func configure() {
         
         //UITabBar.appearance().barTintColor = Design.white

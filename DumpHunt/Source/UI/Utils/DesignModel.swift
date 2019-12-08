@@ -34,21 +34,30 @@ open class DesignModel {
                                                      green: 124.0/255.0,
                                                      blue: 255.0/255.0,
                                                      alpha: 1.0)
-        
     }
     
     public static var green: UIColor { return UIColor(red: 44.0/255.0,
                                                       green: 181.0/255.0,
                                                       blue: 77.0/255.0,
                                                       alpha: 1.0)
-        
     }
     
     public static var orange: UIColor { return UIColor(red: 240.0/255.0,
                                                        green: 118.0/255.0,
                                                        blue: 44.0/255.0,
                                                        alpha: 1.0)
-        
+    }
+    
+    public static var gray: UIColor { return UIColor(red: 237.0/255.0,
+                                                         green: 237.0/255.0,
+                                                         blue: 237.0/255.0,
+                                                         alpha: 1.0)
+    }
+    
+    public static var grayText: UIColor { return UIColor(red: 160.0/255.0,
+                                                         green: 160.0/255.0,
+                                                         blue: 160.0/255.0,
+                                                         alpha: 1.0)
     }
 
 }
