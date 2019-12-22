@@ -39,7 +39,7 @@
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ФИО (опционально)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g3V-DN-vSb">
-                                <rect key="frame" x="15" y="403" width="384" height="34"/>
+                                <rect key="frame" x="15" y="363" width="384" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="J9Z-80-GrI"/>
                                 </constraints>
@@ -47,7 +47,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Номер телефона, email (опционально)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="du8-v1-S7D">
-                                <rect key="frame" x="15" y="452" width="384" height="34"/>
+                                <rect key="frame" x="15" y="405" width="384" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="evk-AE-6vr"/>
                                 </constraints>
@@ -55,7 +55,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="N8n-P7-wrj" customClass="KMPlaceholderTextView" customModule="KMPlaceholderTextView">
-                                <rect key="frame" x="15" y="501" width="384" height="100"/>
+                                <rect key="frame" x="15" y="447" width="384" height="100"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="xnf-FD-isr"/>
@@ -68,7 +68,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLZ-HE-OJG">
-                                <rect key="frame" x="50" y="333" width="314" height="40"/>
+                                <rect key="frame" x="50" y="313" width="314" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="BlN-oe-oVM"/>
                                 </constraints>
@@ -78,9 +78,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CxY-k8-bNW">
-                                <rect key="frame" x="50" y="631" width="314" height="40"/>
+                                <rect key="frame" x="77" y="758" width="260" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="jBj-Kk-pdS"/>
+                                    <constraint firstAttribute="width" constant="260" id="vB3-2S-J6E"/>
                                 </constraints>
                                 <state key="normal" title="Отправить отчёт"/>
                                 <connections>
@@ -90,24 +91,24 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="CxY-k8-bNW" firstAttribute="leading" secondItem="jKo-E6-XP6" secondAttribute="leading" constant="50" id="0AT-Ix-MoA"/>
                             <constraint firstItem="du8-v1-S7D" firstAttribute="leading" secondItem="jKo-E6-XP6" secondAttribute="leading" constant="15" id="1GO-N0-cHn"/>
-                            <constraint firstItem="jKo-E6-XP6" firstAttribute="trailing" secondItem="CxY-k8-bNW" secondAttribute="trailing" constant="50" id="5Ju-Q0-yx0"/>
-                            <constraint firstItem="N8n-P7-wrj" firstAttribute="top" secondItem="du8-v1-S7D" secondAttribute="bottom" constant="15" id="8GZ-do-h6H"/>
+                            <constraint firstItem="N8n-P7-wrj" firstAttribute="top" secondItem="du8-v1-S7D" secondAttribute="bottom" constant="8" id="8GZ-do-h6H"/>
                             <constraint firstItem="PeO-kR-jVd" firstAttribute="top" secondItem="jKo-E6-XP6" secondAttribute="top" constant="15" id="DsR-hM-jcM"/>
                             <constraint firstItem="PLZ-HE-OJG" firstAttribute="leading" secondItem="jKo-E6-XP6" secondAttribute="leading" constant="50" id="JPi-a3-Oom"/>
                             <constraint firstItem="jKo-E6-XP6" firstAttribute="trailing" secondItem="N8n-P7-wrj" secondAttribute="trailing" constant="15" id="McS-A2-k21"/>
-                            <constraint firstItem="PLZ-HE-OJG" firstAttribute="top" secondItem="PeO-kR-jVd" secondAttribute="bottom" constant="30" id="OaT-LA-wQf"/>
+                            <constraint firstItem="PLZ-HE-OJG" firstAttribute="top" secondItem="PeO-kR-jVd" secondAttribute="bottom" constant="10" id="OaT-LA-wQf"/>
                             <constraint firstItem="jKo-E6-XP6" firstAttribute="trailing" secondItem="g3V-DN-vSb" secondAttribute="trailing" constant="15" id="SuY-mk-u1D"/>
                             <constraint firstItem="g3V-DN-vSb" firstAttribute="leading" secondItem="jKo-E6-XP6" secondAttribute="leading" constant="15" id="aU5-Oi-lXw"/>
-                            <constraint firstItem="CxY-k8-bNW" firstAttribute="top" secondItem="N8n-P7-wrj" secondAttribute="bottom" constant="30" id="bPs-I3-6MO"/>
+                            <constraint firstItem="CxY-k8-bNW" firstAttribute="top" relation="greaterThanOrEqual" secondItem="N8n-P7-wrj" secondAttribute="bottom" constant="5" id="bPs-I3-6MO"/>
                             <constraint firstItem="jKo-E6-XP6" firstAttribute="trailing" secondItem="du8-v1-S7D" secondAttribute="trailing" constant="15" id="cLd-bb-ilB"/>
                             <constraint firstItem="jKo-E6-XP6" firstAttribute="trailing" secondItem="PLZ-HE-OJG" secondAttribute="trailing" constant="50" id="fLI-GU-RrA"/>
+                            <constraint firstItem="CxY-k8-bNW" firstAttribute="centerX" secondItem="RtE-GV-cr8" secondAttribute="centerX" id="mdV-Vd-H1j"/>
                             <constraint firstItem="jKo-E6-XP6" firstAttribute="trailing" secondItem="PeO-kR-jVd" secondAttribute="trailing" constant="15" id="nGi-9D-jeD"/>
                             <constraint firstItem="PeO-kR-jVd" firstAttribute="leading" secondItem="jKo-E6-XP6" secondAttribute="leading" constant="15" id="vOr-nc-tbx"/>
-                            <constraint firstItem="g3V-DN-vSb" firstAttribute="top" secondItem="PLZ-HE-OJG" secondAttribute="bottom" constant="30" id="xFE-Dq-dvg"/>
-                            <constraint firstItem="du8-v1-S7D" firstAttribute="top" secondItem="g3V-DN-vSb" secondAttribute="bottom" constant="15" id="xbk-z6-kXN"/>
+                            <constraint firstItem="g3V-DN-vSb" firstAttribute="top" secondItem="PLZ-HE-OJG" secondAttribute="bottom" constant="10" id="xFE-Dq-dvg"/>
+                            <constraint firstItem="du8-v1-S7D" firstAttribute="top" secondItem="g3V-DN-vSb" secondAttribute="bottom" constant="8" id="xbk-z6-kXN"/>
                             <constraint firstItem="N8n-P7-wrj" firstAttribute="leading" secondItem="jKo-E6-XP6" secondAttribute="leading" constant="15" id="yjx-6O-uHO"/>
+                            <constraint firstItem="jKo-E6-XP6" firstAttribute="bottom" secondItem="CxY-k8-bNW" secondAttribute="bottom" constant="15" id="zY3-G3-D3P"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jKo-E6-XP6"/>
                     </view>

@@ -10,28 +10,56 @@ import UIKit
 
 //MARK: - Report
 
-struct Report
+class Report: Codable
 {
-    var image: UIImage?
+    var photo: UIImage?
+    var photoURL: String?
     var fio: String?
     var phone: String?
     var comment: String?
     var latitude: Double?
     var longitude: Double?
 
-    init(image: UIImage? = nil,
+    enum CodingKeys: String, CodingKey {
+        case comment
+        case photoURL = "photo"
+        case latitude = "lat"
+        case longitude = "long"
+        case fio = "feedback_info"
+    }
+    
+    init(photo: UIImage? = nil,
+         photoURL: String? = nil,
          fio: String? = nil,
          phone: String? = nil,
          comment: String? = nil,
          latitude: Double? = nil,
          longitude: Double? = nil)
     {
-        self.image = image
+        self.photo = photo
         self.fio = fio
         self.phone = phone
         self.comment = comment
         self.latitude = latitude
         self.longitude = longitude
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+
+        self.photoURL = try? values.decode(String.self, forKey: .photoURL)
+        self.comment = try? values.decode(String.self, forKey: .comment)
+        self.latitude = try? values.decode(Double.self, forKey: .latitude)
+        self.longitude = try? values.decode(Double.self, forKey: .longitude)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        try container .encode(photoURL, forKey: .photoURL)
+        try container .encode(comment, forKey: .comment)
+        try container .encode(latitude, forKey: .latitude)
+        try container .encode(longitude, forKey: .longitude)
     }
 }
 

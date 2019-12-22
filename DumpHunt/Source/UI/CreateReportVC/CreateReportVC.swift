@@ -17,12 +17,13 @@ class CreateReportVC: BaseVC {
     @IBOutlet var phoneTextField: UITextField!
     @IBOutlet var postReportButton: UIButton!
     
+    let networkClient = NetworkClient()
     var report = Report() {
         didSet {
-            if report.image != nil && report.latitude != nil && report.longitude != nil {
-                selectedNextButton()
+            if report.photo != nil && report.latitude != nil && report.longitude != nil {
+                selectedPostReportButton()
             } else {
-                notSelectedtButton()
+                notSelectedPostReportButton()
             }
         }
     }
@@ -34,7 +35,9 @@ class CreateReportVC: BaseVC {
         
         configure()
         createTapGestureRecognizer()
-        notSelectedtButton()
+        //notSelectedPostReportButton()
+        selectedPostReportButton()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,6 +53,8 @@ class CreateReportVC: BaseVC {
     }
     
     @IBAction func postReportActionButton(_ sender: UIButton) {
+        
+        postSaveReport()
         Utill.printInTOConsole(">>> Report - \(report)")
     }
     
@@ -72,7 +77,7 @@ class CreateReportVC: BaseVC {
         phoneTextField.delegate = self
     }
     
-    func notSelectedtButton() {
+    func notSelectedPostReportButton() {
         
         postReportButton.backgroundColor = Design.gray
         postReportButton.tintColor = Design.grayText
@@ -86,11 +91,40 @@ class CreateReportVC: BaseVC {
         dumpImageView.addGestureRecognizer(tapGestureRecognizer)
     }
     
-    func selectedNextButton() {
+    func selectedPostReportButton() {
         
         postReportButton.backgroundColor = Design.blue
         postReportButton.tintColor = Design.white
         postReportButton.isEnabled = true
+    }
+    
+}
+
+// MARK: - networkClient
+
+extension CreateReportVC {
+    
+    private func postSaveReport() {
+        postReportButton.isUserInteractionEnabled = false
+
+        networkClient.postSaveReport(report: report,
+                                        success: { [weak self] (report) in
+                                            guard let self = self else { return }
+                                            self.report = report
+                                            self.postReportButton.isUserInteractionEnabled = true
+
+                                            DispatchQueue.main.async {
+                                                //self.hideSpinner()
+                                                //self.dismissVC()
+                                            }
+            },
+                                        failure:
+            { [weak self] (message) in
+                guard let self = self else { return }
+               // self.hideSpinner()
+                self.showErrorAlert(message)
+                self.postReportButton.isUserInteractionEnabled = true
+        })
     }
     
 }
@@ -142,7 +176,7 @@ extension CreateReportVC: UINavigationControllerDelegate, UIImagePickerControlle
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let chosenImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         let orientationFixedImage = chosenImage.fixOrientation()
-        report.image = orientationFixedImage
+        report.photo = orientationFixedImage
         dumpImageView.image = orientationFixedImage
         dismiss(animated:true, completion: nil)
     }
@@ -172,6 +206,7 @@ extension CreateReportVC: CreateReportVCDelegate {
     func setCurrentCoordinate(latitude: Double?, longitude: Double?) {
         report.latitude = latitude
         report.longitude = longitude
+        Utill.printInTOConsole(">>> setCurrentCoordinate = \(String(describing: latitude)) \(longitude)")
     }
     
 }

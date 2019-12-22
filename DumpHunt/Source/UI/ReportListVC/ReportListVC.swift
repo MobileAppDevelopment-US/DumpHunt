@@ -12,6 +12,8 @@ class ReportListVC: BaseVC {
 
     @IBOutlet weak var tableView: UITableView!
 
+    var reports = [Report]()
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -52,7 +54,7 @@ extension ReportListVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20//users.count
+        return 20
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
@@ -80,10 +82,16 @@ extension ReportListVC {
         guard let vc = loginVCStoryboard.instantiateViewController(withIdentifier: "ReportDetailsVC") as? ReportDetailsVC else {
             return
         }
-        
+        let report = Report(photo: UIImage(named: "hunt.jpg"),
+                            fio: "Serik",
+                            phone: "90987978979",
+                            comment: "Здесь очень грязно",
+                            latitude: 64.513695,
+                            longitude: 40.507912)
+        vc.report = report
         pushViewController(vc)
     }
-    
+
 }
 
 

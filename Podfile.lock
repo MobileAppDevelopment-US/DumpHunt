@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (5.0.0-rc.3)
   - GoogleMaps (3.6.0):
     - GoogleMaps/Maps (= 3.6.0)
   - GoogleMaps/Base (3.6.0)
@@ -8,21 +9,24 @@ PODS:
   - KMPlaceholderTextView (1.4.0)
 
 DEPENDENCIES:
+  - Alamofire (~> 5.0.0-rc.3)
   - GoogleMaps
   - IQKeyboardManagerSwift
   - KMPlaceholderTextView
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - GoogleMaps
     - IQKeyboardManagerSwift
     - KMPlaceholderTextView
 
 SPEC CHECKSUMS:
+  Alamofire: ca8c0de6906873be89d6deec5c8de279e00bf872
   GoogleMaps: 82f8fe307193bb4de6ef6bf9e88f1d624b718f9d
   IQKeyboardManagerSwift: 2dde0fc70110e8eac7ccce2a46fdbec6a850b414
   KMPlaceholderTextView: 2206c3df39979e9396e2d96fa9f427a8951121b0
 
-PODFILE CHECKSUM: 646b91d35be9dc7f7a6052b417533d9970bd73dd
+PODFILE CHECKSUM: 1696cc2c4f5312e210b613396c1105017bfbab16
 
 COCOAPODS: 1.8.4

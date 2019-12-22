@@ -40,7 +40,7 @@ class GoogleMapsVC: BaseVC {
         delegate?.setCurrentCoordinate(latitude: latitude, longitude: longitude)
     }
     
-    // Mark: Mehods
+    // Mark: Methods
     
     private func getLocation() {
         

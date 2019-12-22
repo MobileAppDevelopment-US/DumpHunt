@@ -6,7 +6,7 @@
 //  Copyright © 2019 Serik_Klement. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class Utill: NSObject {
     
@@ -27,5 +27,6 @@ class Utill: NSObject {
         print("\(printData)")
         #endif
     }
+
     
 }

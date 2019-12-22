@@ -38,10 +38,10 @@
                                     <constraint firstAttribute="height" constant="50" id="nzE-bU-mDC"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ezk-gH-Mti">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezk-gH-Mti">
                                 <rect key="frame" x="20" y="178" width="374" height="635"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <mutableString key="text">Пожаловаться на свалки и другие эконарушения 
+                                <string key="text">Пожаловаться на свалки и другие эконарушения 
 
 Приложение «Охота за свалкой» создано для общественного контроля работы регионального оператора по обращению с отходами Архангельской области, а также теми предприятиями или конкретными лицами, которые наносят вред окружающей среде.
 
@@ -56,7 +56,7 @@
 Просто сфотографируйте объект нарушения, обозначьте координаты на карте и по желанию опишите парой слов проблему. Редакция проекта «Экология Поморья» Ecolog29.ru обработает ваше письмо и направит запросы в тот орган, который уполномочен устранить нарушение.
 
 О результатах будем отчитываться, а наиболее интересные и резонансные дела публиковать в нашей группе ВК @ecologist29 и в телеграм-канале @ecolog29
-</mutableString>
+</string>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

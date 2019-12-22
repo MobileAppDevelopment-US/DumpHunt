@@ -9,5 +9,6 @@ target 'DumpHunt' do
   pod 'IQKeyboardManagerSwift'
   pod 'KMPlaceholderTextView'
   pod 'GoogleMaps'
+  pod 'Alamofire', '~> 5.0.0-rc.3'
 
 end
