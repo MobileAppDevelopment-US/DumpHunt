@@ -13,87 +13,76 @@ final class NetworkClient: NSObject {
 
     enum ContentType: String {
         case json = "application/json"
-        case form = "application/x-www-form-urlencoded"
-        case version = "v1"
     }
-    
+
     enum HTTPHeaderField: String {
-        
-        case authorization = "Authorization"
-        case contentType = "Content-Type"
-        case acceptType = "Accept"
-        case apiVersion = "Api-Version"
+        case contentType = "text/plain"
     }
-    
-    let userDefaults = UserDefaults.standard
-    
+
     private var headers: HTTPHeaders {
         return [
-            HTTPHeaderField.contentType.rawValue: ContentType.form.rawValue,
-            HTTPHeaderField.acceptType.rawValue: ContentType.json.rawValue,
-            HTTPHeaderField.apiVersion.rawValue: ContentType.version.rawValue
+            HTTPHeaderField.contentType.rawValue: ContentType.json.rawValue,
         ]
     }
+    var isConnectedToInternet: Bool {
+        return NetworkReachabilityManager()!.isReachable
+    }
     
+    static let ApiUrlPath = "http://teachyourself.pythonanywhere.com/api/v1"
 
-    private let ApiUrlPath = "http://0.0.0.0:8000/api/v1/reports/"
+    private let PostReport = "\(ApiUrlPath)/reports/"
+    private let GetReports = "\(ApiUrlPath)/reports/" //Изменить!!!!
 
-
+    // MARK: - Methods
     
     func postSaveReport(report: Report?,
-                        success: ReportCompletion?,
+                        success: VoidCompletion?,
                         failure: ErrorCompletion?) {
         
-        let parameters: [String : Any] = ["lat": 64.513695,
-                                          "long": 40.507912,
-                                          "comment": "Здесь все грязно",
-                                          "feedback_info": "Serik"]
-        
-//        guard let latitude = report?.latitude,
-//            let longitude = report?.longitude else { return }
-//
-//        let parameters: [String : Any] = ["lat": latitude,
-//                                          "long": longitude,
-//                                          "comment": report?.comment ?? "",
-//                                          "feedback_info": report?.fio ?? ""]
-        
+        guard let latitude = report?.latitude,
+            let longitude = report?.longitude else {
+                failure?("Отсутствуют координаты")
+                return
+        }
+
+        let fio = report?.fio ?? ""
+        let phone = report?.phone ?? ""
+        let comment = report?.comment ?? ""
+
+        let parameters: [String : Any] = ["lat": latitude,
+                                          "long": longitude,
+                                          "feedback_info": "ФИО - \(fio);  Номер телефона - \(phone);  Комментарий - \(comment)"]
+
         var imageData: Data!
         if let image = report?.photo {
             imageData = image.jpegData(compressionQuality: 0.5)
-        } else {
-            let image = UIImage(named: "hunt.jpg")
-            imageData = image!.jpegData(compressionQuality: 0.5) // placeholder
-        }
+        } 
         
         AF.upload(multipartFormData: { multipartFormData in
             for (key, value) in parameters {
                 if let value = value as? String {
                     multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
                 }
-                
-//                if let values = value as? [String] {
-//                    for item in values {
-//                        multipartFormData.append(item.data(using: .utf8)!, withName: key)
-//                    }
-//                }
-                
             }
             multipartFormData.append(imageData, withName: "photo",
                                      fileName: "swift_file.png",
                                      mimeType: "image/png")
-        }, to: ApiUrlPath,
+        }, to: PostReport,
            usingThreshold: UInt64.init(),
            method: .post,
            headers: headers).validate(statusCode: 200..<300).response { response in
             
             guard let data = response.data,
-                let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String : Any] else { return }
+                let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String : Any] else {
+                    failure?("Ошибка сервера")
+                    return
+            }
+
+            Utill.printInTOConsole("response = \(String(data: data, encoding: .utf8) ?? "")")
             
             switch response.result {
             case .success:
-                if let report = self.reportMap(data: data) {
-                    success?(report)
-                }
+                success?()
                 break
                 
             case .failure:
@@ -106,15 +95,49 @@ final class NetworkClient: NSObject {
             }
         }
     }
+    
+    func getReports(success: ReportsCompletion?,
+                    failure: ErrorCompletion?) {
+        
+        AF.request(GetReports,
+                   method: .get,
+                   parameters: nil,
+                   encoding: JSONEncoding.default,
+                   headers: headers).validate(statusCode: 200..<300).response { response in
+                    
+                    guard let data = response.data,
+                        let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String : Any] else {
+                            failure?("Ошибка сервера")
+                            return
+                    }
+                    
+                    switch response.result {
+                    case .success:
+                        if let reports = self.reportsMap(data: data) {
+                        success?(reports)
+                         }
+                        break
+                        
+                    case .failure:
+                        self.errorHandler(json: json,
+                                          response: response,
+                                          success:
+                            { (message) in
+                                failure?(message)
+                        })
+                    }
+        }
+    }
+    
 }
 
 // MARK: - MAPPING
 
 extension NetworkClient {
 
-    private func reportMap(data: Data?) -> Report? {
+    private func reportsMap(data: Data?) -> [Report]? {
         guard let data = data else { return nil }
-        let report: Report = try! JSONDecoder().decode(Report.self, from: data)
+        let report: [Report] = [try! JSONDecoder().decode(Report.self, from: data)]
         return report
     }
     
@@ -130,6 +153,7 @@ extension NetworkClient {
         
         guard let statusCode = response.response?.statusCode,
             let message: String = json["msg"] as? String else {
+                success?("Ошибка сервера")
                 return
         }
         

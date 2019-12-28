@@ -7,14 +7,17 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 class BaseVC: UIViewController {
+
+    private var hud: JGProgressHUD?
+    let networkClient = NetworkClient()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setBackArrowButton()
-        //view.backgroundColor = Design.orange
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,15 +66,54 @@ class BaseVC: UIViewController {
     func pushViewController(_ vc: UIViewController) {
         self.navigationController?.pushViewController(vc, animated: true)
     }
+   
+}
+
+// MARK: - Spinner
+
+extension BaseVC {
     
-    
-    func showErrorAlert(_ message: String?) {
-        let alert = UIAlertController(title: nil,
-                                      message: message,
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok",
-                                      style: .default,
-                                      handler: nil))
-        self.present(alert, animated: true)
+    func showSpinner() {
+        hideSpinner()
+        hud = JGProgressHUD(style: .dark)
+        hud?.show(in: self.view)
     }
+    
+    func hideSpinner() {
+        hud?.dismiss(afterDelay: 0.1)
+        hud = nil
+    }
+    
+}
+
+// MARK: - CheckConnectedToInternet
+
+extension BaseVC {
+    
+    func checkConnectedToInternet() {
+        
+        if networkClient.isConnectedToInternet == false {
+            showConnectedToInternetAlert()
+        }
+    }
+    
+    func showConnectedToInternetAlert() {
+        
+        let controller = UIAlertController(title: "Отсутсвует интернет",
+                                           message: "Для получения или отправки данных подключитесь к Интернету",
+                                           preferredStyle: .alert)
+        
+        let ok = UIAlertAction(title: "OK",
+                               style: .default,
+                               handler: nil)
+        let cancel = UIAlertAction(title: "Отменить",
+                                   style: .cancel,
+                                   handler: nil)
+        
+        controller.addAction(ok)
+        controller.addAction(cancel)
+        
+        present(controller, animated: true, completion: nil)
+    }
+    
 }

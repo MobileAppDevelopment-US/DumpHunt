@@ -13,7 +13,7 @@ protocol CreateReportVCDelegate: class {
     func setCurrentCoordinate(latitude: Double?, longitude: Double?)
 }
 
-class GoogleMapsVC: BaseVC {
+final class GoogleMapsVC: BaseVC {
     
     var mapView = GMSMapView()
     var currentMarker = GMSMarker()
@@ -29,10 +29,9 @@ class GoogleMapsVC: BaseVC {
         super.viewDidLoad()
         
         getLocation()
-        //showMapView()
     }
     
-    // Mark: Action
+    // Mark: Actions
     
     override func leftButtonAction(_ button: UIBarButtonItem) {
         super.leftButtonAction(button)
@@ -58,24 +57,26 @@ class GoogleMapsVC: BaseVC {
                 
             case .denied, .restricted:
                 showDisabledLocationAlert()
+                break
                 
             case .authorizedAlways, .authorizedWhenInUse :
                 isLocation = true
                 locationManager.startUpdatingLocation()
                 locationManager.startMonitoringSignificantLocationChanges()
+                break
                 
             default:
                 break
             }
         } else {
-            Utill.printInTOConsole("Location services are not enabled")
+            showDisabledLocationAlert()
         }
     }
     
-    func showMapView() {
+    private func showMapView() {
         
-        let latitude = self.latitude ?? DefaultLocation.Moscow.latitude
-        let longitude = self.longitude ?? DefaultLocation.Moscow.longitude
+        let latitude = self.latitude ?? DefaultLocation.Arkhangelsk.latitude
+        let longitude = self.longitude ?? DefaultLocation.Arkhangelsk.longitude
         
         let camera = GMSCameraPosition.camera(withLatitude: latitude,
                                               longitude: longitude,
@@ -100,15 +101,15 @@ class GoogleMapsVC: BaseVC {
     
     private func showDisabledLocationAlert() {
         
-        let accessAlert = UIAlertController(title: "Location Services Disabled",
-                                            message: "You need to enable location services in settings.",
+        let accessAlert = UIAlertController(title: "Определение местоположения отключено",
+                                            message: "Вам необходимо включить определениt местоположения в настройках.",
                                             preferredStyle: .alert)
         
         accessAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
             UIApplication.shared.open(NSURL(string: UIApplication.openSettingsURLString)! as URL)
         }))
         
-        accessAlert.addAction(UIAlertAction(title: "Cancel",
+        accessAlert.addAction(UIAlertAction(title: "Отмена",
                                             style: .cancel,
                                             handler: nil))
         
@@ -128,7 +129,6 @@ extension GoogleMapsVC: CLLocationManagerDelegate {
         
         if isLocation {
             isLocation = false
-            Utill.printInTOConsole(">>> didUpdateLocations = \(coordinate.latitude) \(coordinate.longitude)")
             
             latitude = coordinate.latitude
             longitude = coordinate.longitude
@@ -160,14 +160,12 @@ extension GoogleMapsVC: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didEndDragging marker: GMSMarker) {
         latitude = marker.position.latitude
         longitude = marker.position.longitude
-        Utill.printInTOConsole(">> didEndDragging- \(marker.position)")
     }
     
     func mapView(_ mapView: GMSMapView, didLongPressAt coordinate: CLLocationCoordinate2D) {
         currentMarker.position = coordinate
         latitude = coordinate.latitude
         longitude = coordinate.longitude
-        Utill.printInTOConsole(">>>>>> didLongPressAt- \(coordinate)")
     }
     
 }
@@ -179,11 +177,11 @@ extension GoogleMapsVC {
     struct DefaultLocation {
         private init(){}
         
-        struct Moscow {
+        struct Arkhangelsk {
             private init(){}
             
-            static let latitude = 55.75
-            static let longitude = 37.48
+            static let latitude = 64.542227
+            static let longitude = 40.563143
         }
     }
     

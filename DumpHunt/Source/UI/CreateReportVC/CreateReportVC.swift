@@ -9,24 +9,17 @@
 import UIKit
 import CoreLocation
 
-class CreateReportVC: BaseVC {
+final class CreateReportVC: BaseVC {
     
     @IBOutlet var dumpImageView: UIImageView!
     @IBOutlet var descriptionTextView: UITextView!
     @IBOutlet var fioTextField: UITextField!
     @IBOutlet var phoneTextField: UITextField!
+    @IBOutlet var gpsLabel: UILabel!
     @IBOutlet var postReportButton: UIButton!
-    
-    let networkClient = NetworkClient()
-    var report = Report() {
-        didSet {
-            if report.photo != nil && report.latitude != nil && report.longitude != nil {
-                selectedPostReportButton()
-            } else {
-                notSelectedPostReportButton()
-            }
-        }
-    }
+    @IBOutlet var openMapButton: UIButton!
+
+    var report = Report()
     
     // MARK: - Lifecycle
     
@@ -35,39 +28,49 @@ class CreateReportVC: BaseVC {
         
         configure()
         createTapGestureRecognizer()
-        //notSelectedPostReportButton()
-        selectedPostReportButton()
-
+        notSelectedPostReportButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super .viewWillAppear(animated)
         
         setHiddenBlackArrowButton()
+        checkConnectedToInternet()
     }
     
-    // Mark: Action
+    // Mark: Actions
     
     @IBAction func mapActionButton(_ sender: UIButton) {
+        report.latitude = nil
+        report.longitude = nil
+        gpsLabel.text = ""
+        gpsLabel.isHidden = true
+        
         showGoogleMapsVC()
     }
     
     @IBAction func postReportActionButton(_ sender: UIButton) {
         
-        postSaveReport()
-        Utill.printInTOConsole(">>> Report - \(report)")
+        if networkClient.isConnectedToInternet == true {
+            postSaveReport()
+        } else {
+            showConnectedToInternetAlert()
+        }
     }
     
-    // Mark: Mehods
+    // Mark: Methods
     
     private func configure() {
+        
         dumpImageView.layer.cornerRadius = 10.0
         dumpImageView.layer.masksToBounds = true
         
-        descriptionTextView.layer.cornerRadius = 10.0
-        descriptionTextView.layer.masksToBounds = true
-        descriptionTextView.layer.borderWidth = 1
-        descriptionTextView.layer.borderColor = Design.lightGray.cgColor
+        configureView(gpsLabel)
+        gpsLabel.isHidden = true
+        
+        configureView(descriptionTextView)
+        configureView(fioTextField)
+        configureView(phoneTextField)
         
         postReportButton.layer.cornerRadius = postReportButton.frame.size.height / 2
         postReportButton.layer.masksToBounds = true
@@ -77,11 +80,18 @@ class CreateReportVC: BaseVC {
         phoneTextField.delegate = self
     }
     
-    func notSelectedPostReportButton() {
+    private func configureView(_ view: UIView) {
+        
+        view.layer.cornerRadius = 4.0
+        view.layer.masksToBounds = true
+        view.layer.borderWidth = 1
+        view.layer.borderColor = Design.lightGray.cgColor
+    }
+    
+    private func notSelectedPostReportButton() {
         
         postReportButton.backgroundColor = Design.gray
         postReportButton.tintColor = Design.grayText
-        //nextButton.titleLabel?.font = UIFont(name: Design.avenirBold, size: Design.medium)
         postReportButton.isEnabled = false
     }
     
@@ -91,40 +101,82 @@ class CreateReportVC: BaseVC {
         dumpImageView.addGestureRecognizer(tapGestureRecognizer)
     }
     
-    func selectedPostReportButton() {
+    private func selectedPostReportButton() {
         
-        postReportButton.backgroundColor = Design.blue
+        postReportButton.backgroundColor = Design.orange
         postReportButton.tintColor = Design.white
         postReportButton.isEnabled = true
     }
     
+    private func isEnabledPostReportButton() {
+        if report.photo != nil && report.latitude != nil && report.longitude != nil {
+            selectedPostReportButton()
+        } else {
+            notSelectedPostReportButton()
+        }
+    }
+    
 }
 
-// MARK: - networkClient
+// MARK: - NetworkClient
 
 extension CreateReportVC {
     
     private func postSaveReport() {
+        
         postReportButton.isUserInteractionEnabled = false
-
+        showSpinner()
+        
         networkClient.postSaveReport(report: report,
-                                        success: { [weak self] (report) in
-                                            guard let self = self else { return }
-                                            self.report = report
-                                            self.postReportButton.isUserInteractionEnabled = true
-
-                                            DispatchQueue.main.async {
-                                                //self.hideSpinner()
-                                                //self.dismissVC()
-                                            }
+                                     success: { [weak self] () in
+                                        guard let self = self else { return }
+                                        self.postReportButton.isUserInteractionEnabled = true
+                                        
+                                        DispatchQueue.main.async {
+                                            self.hideSpinner()
+                                            self.showSuccessAlert("Данные отправлены")
+                                        }
             },
-                                        failure:
+                                     failure:
             { [weak self] (message) in
                 guard let self = self else { return }
-               // self.hideSpinner()
+                self.hideSpinner()
                 self.showErrorAlert(message)
                 self.postReportButton.isUserInteractionEnabled = true
         })
+    }
+    
+    private func dataCleaning() {
+        report = Report()
+        dumpImageView.image = UIImage(named: "addPhotoPlaceholder.jpg")
+        gpsLabel.text = ""
+        gpsLabel.isHidden = true
+        fioTextField.text = ""
+        descriptionTextView.text = ""
+        phoneTextField.text = ""
+    }
+    
+    private func showSuccessAlert(_ message: String?) {
+        let alert = UIAlertController(title: nil,
+                                      message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok",
+                                      style: .default,
+                                      handler: { _ in
+                                        self.dataCleaning()
+                                        self.notSelectedPostReportButton()
+        }))
+        self.present(alert, animated: true)
+    }
+    
+    private func showErrorAlert(_ message: String?) {
+        let alert = UIAlertController(title: nil,
+                                      message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok",
+                                      style: .default,
+                                      handler: nil))
+        self.present(alert, animated: true)
     }
     
 }
@@ -178,6 +230,7 @@ extension CreateReportVC: UINavigationControllerDelegate, UIImagePickerControlle
         let orientationFixedImage = chosenImage.fixOrientation()
         report.photo = orientationFixedImage
         dumpImageView.image = orientationFixedImage
+        isEnabledPostReportButton()
         dismiss(animated:true, completion: nil)
     }
     
@@ -204,13 +257,20 @@ extension CreateReportVC {
 extension CreateReportVC: CreateReportVCDelegate {
     
     func setCurrentCoordinate(latitude: Double?, longitude: Double?) {
-        report.latitude = latitude
-        report.longitude = longitude
-        Utill.printInTOConsole(">>> setCurrentCoordinate = \(String(describing: latitude)) \(longitude)")
+        
+        if let latitude = latitude, let longitude = longitude {
+            report.latitude = String(latitude)
+            report.longitude = String(longitude)
+            gpsLabel.text = "  GPS: \(latitude)  \(longitude)"
+            gpsLabel.isHidden = false
+            isEnabledPostReportButton()
+        } else {
+            gpsLabel.isHidden = true
+        }
+        Utill.printInTOConsole(">>> setCurrentCoordinate = \(String(describing: latitude)) \(String(describing: longitude))")
     }
     
 }
-
 
 // MARK: - UITextViewDelegate
 

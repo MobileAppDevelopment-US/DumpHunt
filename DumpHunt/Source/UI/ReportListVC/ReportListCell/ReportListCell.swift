@@ -7,20 +7,40 @@
 //
 
 import UIKit
+import Kingfisher
 
-class ReportListCell: UITableViewCell {
-
+final class ReportListCell: UITableViewCell {
+    
+    @IBOutlet var dumpImageView: UIImageView!
+    @IBOutlet var gpsLabel: UILabel!
+    @IBOutlet var commentLabel: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-
-        configure()
         
+        selectionStyle = .none
     }
+    
+    func setReport(_ report: Report?) {
 
-
-    private func configure() {
+        if let textUrl = report?.photoURL, let url = URL(string: textUrl) {
+            dumpImageView.kf.setImage(with: url,
+                                        placeholder: Utill.getPlaceholder(),
+                                        options: [.transition(.fade(1)),
+                                                  .cacheOriginalImage])
+        } else {
+            dumpImageView.image = Utill.getPlaceholder()
+        }
         
-
+        if let latitude = report?.latitude, let longitude = report?.longitude{
+            gpsLabel.text = latitude + longitude
+        }
+        
+        if let comment = report?.comment {
+            commentLabel.text = comment
+        }
+        
         selectionStyle = .none
     }
     

@@ -17,8 +17,8 @@ class Report: Codable
     var fio: String?
     var phone: String?
     var comment: String?
-    var latitude: Double?
-    var longitude: Double?
+    var latitude: String?
+    var longitude: String?
 
     enum CodingKeys: String, CodingKey {
         case comment
@@ -33,8 +33,8 @@ class Report: Codable
          fio: String? = nil,
          phone: String? = nil,
          comment: String? = nil,
-         latitude: Double? = nil,
-         longitude: Double? = nil)
+         latitude: String? = nil,
+         longitude: String? = nil)
     {
         self.photo = photo
         self.fio = fio
@@ -49,8 +49,8 @@ class Report: Codable
 
         self.photoURL = try? values.decode(String.self, forKey: .photoURL)
         self.comment = try? values.decode(String.self, forKey: .comment)
-        self.latitude = try? values.decode(Double.self, forKey: .latitude)
-        self.longitude = try? values.decode(Double.self, forKey: .longitude)
+        self.latitude = try? values.decode(String.self, forKey: .latitude)
+        self.longitude = try? values.decode(String.self, forKey: .longitude)
     }
     
     func encode(to encoder: Encoder) throws {

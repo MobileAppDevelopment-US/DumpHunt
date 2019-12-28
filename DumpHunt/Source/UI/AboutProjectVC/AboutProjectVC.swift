@@ -8,27 +8,14 @@
 
 import UIKit
 
-class AboutProjectVC: BaseVC {
+final class AboutProjectVC: BaseVC {
 
     // MARK: - Lifecycle
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        configure()
-    }
-        
     override func viewWillAppear(_ animated: Bool) {
         super .viewWillAppear(animated)
         
         setHiddenBlackArrowButton()
     }
-    
-    // Mark: Mehods
 
-    private func configure() {
-        
-        
-    }
-    
 }

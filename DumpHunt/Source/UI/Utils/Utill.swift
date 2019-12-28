@@ -8,19 +8,7 @@
 
 import UIKit
 
-class Utill: NSObject {
-    
-//    private static let userDefaults = UserDefaults.standard
-//    
-//    public static var longitude : Double? {
-//        get { return userDefaults.double(forKey: Design.keyLongitude) }
-//        set { userDefaults.setValue(newValue, forKey: Design.keyLongitude) }
-//    }
-//    
-//    public static var latitude : Double? {
-//        get { return userDefaults.double(forKey: Design.keyLatitude) }
-//        set { userDefaults.setValue(newValue, forKey: Design.keyLatitude) }
-//    }
+final class Utill: NSObject {
     
     class func printInTOConsole(_ printData : Any) {
         #if DEBUG
@@ -28,5 +16,8 @@ class Utill: NSObject {
         #endif
     }
 
+    class func getPlaceholder() -> UIImage {
+        return UIImage(named: "placeholder")!
+    }
     
 }

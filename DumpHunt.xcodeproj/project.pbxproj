@@ -23,7 +23,6 @@
 		CEB1B07C238851B60028D02C /* Utill.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB1B07B238851B60028D02C /* Utill.swift */; };
 		CEB1B07E238855150028D02C /* GoogleMapsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB1B07D238855150028D02C /* GoogleMapsVC.swift */; };
 		CEB1B0802388552A0028D02C /* GoogleMapsVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEB1B07F2388552A0028D02C /* GoogleMapsVC.storyboard */; };
-		CEB1B082238872A80028D02C /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB1B081238872A80028D02C /* Singleton.swift */; };
 		CEBC26142387D2FD00738CB7 /* CreateReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBC26132387D2FD00738CB7 /* CreateReportVC.swift */; };
 		CEBC26162387D30500738CB7 /* CreateReportVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEBC26152387D30500738CB7 /* CreateReportVC.storyboard */; };
 		CEBC26192387DBE000738CB7 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBC26182387DBE000738CB7 /* BaseVC.swift */; };
@@ -40,7 +39,7 @@
 		05FE2D71F6449EF296E3CE82 /* Pods-DumpHunt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DumpHunt.debug.xcconfig"; path = "Target Support Files/Pods-DumpHunt/Pods-DumpHunt.debug.xcconfig"; sourceTree = "<group>"; };
 		169E9F0EC17A9425E4271392 /* Pods_DumpHunt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DumpHunt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7248B284B09D7982EE469B3B /* Pods-DumpHunt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DumpHunt.release.xcconfig"; path = "Target Support Files/Pods-DumpHunt/Pods-DumpHunt.release.xcconfig"; sourceTree = "<group>"; };
-		CE31D9112387CEC200E6FF2D /* DumpHunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DumpHunt.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE31D9112387CEC200E6FF2D /* Охота на свалку.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Охота на свалку.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE31D9142387CEC200E6FF2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE31D9162387CEC200E6FF2D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CE31D91D2387CEC300E6FF2D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -58,7 +57,6 @@
 		CEB1B07B238851B60028D02C /* Utill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utill.swift; sourceTree = "<group>"; };
 		CEB1B07D238855150028D02C /* GoogleMapsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsVC.swift; sourceTree = "<group>"; };
 		CEB1B07F2388552A0028D02C /* GoogleMapsVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoogleMapsVC.storyboard; sourceTree = "<group>"; };
-		CEB1B081238872A80028D02C /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		CEBC26132387D2FD00738CB7 /* CreateReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReportVC.swift; sourceTree = "<group>"; };
 		CEBC26152387D30500738CB7 /* CreateReportVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateReportVC.storyboard; sourceTree = "<group>"; };
 		CEBC26182387DBE000738CB7 /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
@@ -104,7 +102,7 @@
 		CE31D9122387CEC200E6FF2D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CE31D9112387CEC200E6FF2D /* DumpHunt.app */,
+				CE31D9112387CEC200E6FF2D /* Охота на свалку.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -112,9 +110,9 @@
 		CE31D9132387CEC200E6FF2D /* DumpHunt */ = {
 			isa = PBXGroup;
 			children = (
+				CE31D9282387CFAB00E6FF2D /* SupportingFile */,
 				CE31D92A2387CFD500E6FF2D /* Source */,
 				CE31D9292387CFCD00E6FF2D /* Resource */,
-				CE31D9282387CFAB00E6FF2D /* SupportingFile */,
 			);
 			path = DumpHunt;
 			sourceTree = "<group>";
@@ -177,7 +175,6 @@
 			children = (
 				CE31D9302387D09100E6FF2D /* DesignModel.swift */,
 				CEB1B07B238851B60028D02C /* Utill.swift */,
-				CEB1B081238872A80028D02C /* Singleton.swift */,
 				CE5ED0BC239D28A9004D8897 /* Extensions+UIImage.swift */,
 				CE9B376223AFCB7A00C26D20 /* CommonTypes.swift */,
 			);
@@ -291,7 +288,7 @@
 			);
 			name = DumpHunt;
 			productName = DumpHunt;
-			productReference = CE31D9112387CEC200E6FF2D /* DumpHunt.app */;
+			productReference = CE31D9112387CEC200E6FF2D /* Охота на свалку.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -417,7 +414,6 @@
 				CE31D9312387D09100E6FF2D /* DesignModel.swift in Sources */,
 				CE31D9372387D1FB00E6FF2D /* ReportListVC.swift in Sources */,
 				CEB1B07E238855150028D02C /* GoogleMapsVC.swift in Sources */,
-				CEB1B082238872A80028D02C /* Singleton.swift in Sources */,
 				CE9B376123AFCB0600C26D20 /* NetworkClient.swift in Sources */,
 				CE31D9152387CEC200E6FF2D /* AppDelegate.swift in Sources */,
 				CEB1B07C238851B60028D02C /* Utill.swift in Sources */,
@@ -563,8 +559,9 @@
 			baseConfigurationReference = 05FE2D71F6449EF296E3CE82 /* Pods-DumpHunt.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 3TX466DVBY;
 				INFOPLIST_FILE = "$(SRCROOT)/DumpHunt/SupportingFile/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -572,9 +569,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Serik-Klement.DumpHunt";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.DumpHunt;
+				PRODUCT_NAME = "Охота на свалку";
+				PROVISIONING_PROFILE_SPECIFIER = DumpHunt_Development;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -585,8 +582,9 @@
 			baseConfigurationReference = 7248B284B09D7982EE469B3B /* Pods-DumpHunt.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 3TX466DVBY;
 				INFOPLIST_FILE = "$(SRCROOT)/DumpHunt/SupportingFile/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -594,9 +592,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Serik-Klement.DumpHunt";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.DumpHunt;
+				PRODUCT_NAME = "Охота на свалку";
+				PROVISIONING_PROFILE_SPECIFIER = DumpHunt_Distribution;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

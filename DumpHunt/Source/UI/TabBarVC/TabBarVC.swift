@@ -18,12 +18,10 @@ class TabBarVC: UITabBarController {
         configure()
     }
     
-    // Mark: Mehods
+    // Mark: Methods
 
     private func configure() {
-        
-        //UITabBar.appearance().barTintColor = Design.white
-        
+                
         let appearance = UITabBarItem.appearance()
         let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12.0)]
         appearance.setTitleTextAttributes(attributes as [NSAttributedString.Key : Any], for: .normal)
@@ -33,8 +31,6 @@ class TabBarVC: UITabBarController {
         tabBar.items?[2].title = "О проекте"
 
         tabBar.tintColor = Design.green
-        //tabBar.unselectedItemTintColor = Design.white
-
         tabBar.isTranslucent = false
     }
 

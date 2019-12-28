@@ -22,8 +22,6 @@ open class DesignModel {
     static let standart: CGFloat = 17.0
     static let big: CGFloat = 20.0
 
-    // Fonts
-
     // Colors
     
     public static var black: UIColor { return .black }

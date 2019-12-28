@@ -8,17 +8,20 @@
 
 import UIKit
 
-class ReportDetailsVC: BaseVC {
+protocol ReportListVCDelegate: class {
+    func setIsGetReports(_ isGetReports: Bool)
+}
+
+final class ReportDetailsVC: BaseVC {
 
     @IBOutlet var dumpImageView: UIImageView!
     @IBOutlet var latitudeLabel: UILabel!
     @IBOutlet var longitudeLabel: UILabel!
-    @IBOutlet var fioLabel: UILabel!
-    @IBOutlet var contactLabel: UILabel!
     @IBOutlet var commentTextView: UITextView!
 
     var report: Report?
-    
+    weak var delegate: ReportListVCDelegate?
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -27,7 +30,17 @@ class ReportDetailsVC: BaseVC {
         setReport()
     }
     
-    func setReport() {
+    // Mark: Action
+    
+    override func leftButtonAction(_ button: UIBarButtonItem) {
+        super.leftButtonAction(button)
+        
+        delegate?.setIsGetReports(false)
+    }
+    
+    // Mark: Methods
+
+    private func setReport() {
         
         if let dumpImage = report?.photo {
             dumpImageView.image = dumpImage
@@ -40,15 +53,7 @@ class ReportDetailsVC: BaseVC {
         if let longitude = report?.longitude {
             longitudeLabel.text = String(longitude)
         }
-        
-        if let fio = report?.fio {
-            fioLabel.text = fio
-        }
-        
-        if let contact = report?.phone {
-            contactLabel.text = contact
-        }
-        
+
         if let comment = report?.comment {
             commentTextView.text = comment
         }
