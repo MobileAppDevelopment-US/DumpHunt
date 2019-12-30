@@ -24,9 +24,12 @@
                             <constraint firstAttribute="width" constant="80" id="jFu-Zh-7MM"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Fb-gd-WRb">
-                        <rect key="frame" x="105" y="12" width="191" height="77"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Fb-gd-WRb">
+                        <rect key="frame" x="105" y="12" width="191" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="3do-Hy-rPD"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -46,7 +49,6 @@
                     <constraint firstItem="5Fb-gd-WRb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="KnN-D7-Ch4"/>
                     <constraint firstAttribute="bottom" secondItem="06I-Ks-WVv" secondAttribute="bottom" id="UgF-la-wxT"/>
                     <constraint firstAttribute="trailing" secondItem="5Fb-gd-WRb" secondAttribute="trailing" constant="24" id="XY3-ok-nG4"/>
-                    <constraint firstAttribute="bottom" secondItem="5Fb-gd-WRb" secondAttribute="bottom" constant="11" id="fQz-Q9-Ksw"/>
                     <constraint firstItem="TuC-i6-w5G" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="vZd-vU-BMT"/>
                     <constraint firstItem="06I-Ks-WVv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="zDd-tU-4CF"/>
                 </constraints>
@@ -54,6 +56,8 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="bottomView" destination="06I-Ks-WVv" id="4sv-R0-Mfm"/>
+                <outlet property="dateLabel" destination="5Fb-gd-WRb" id="m3q-zs-PaW"/>
+                <outlet property="dumpImageView" destination="TuC-i6-w5G" id="VWe-Jr-VVv"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="127.90178571428571"/>
         </tableViewCell>

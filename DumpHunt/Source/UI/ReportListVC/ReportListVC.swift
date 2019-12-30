@@ -72,15 +72,15 @@ extension ReportListVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20//reports.count
+        return reports.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReportListCell",
                                                  for: indexPath) as! ReportListCell
-        //let report = reports[indexPath.row]
-        //cell.setReport(report)
+        let report = reports[indexPath.row]
+        cell.setReport(report)
         
         return cell
     }
@@ -101,15 +101,15 @@ extension ReportListVC {
         guard let vc = loginVCStoryboard.instantiateViewController(withIdentifier: "ReportDetailsVC") as? ReportDetailsVC else {
             return
         }
-        let report = Report(photo: UIImage(named: "hunt.jpg"),
-                            fio: "Serik",
-                            phone: "90987978979",
-                            comment: "Здесь очень грязно",
-                            latitude: "64.513695",
-                            longitude: "40.507912")
-        vc.report = report
+//        let report = Report(photo: UIImage(named: "hunt.jpg"),
+//                            fio: "Serik",
+//                            phone: "90987978979",
+//                            comment: "Здесь очень грязно",
+//                            latitude: "64.513695",
+//                            longitude: "40.507912")
+       // vc.report = report
         vc.delegate = self
-        //vc.report = reports[indexPath.row]
+        vc.report = reports[indexPath.row]
         pushViewController(vc)
     }
 
@@ -130,9 +130,9 @@ extension ReportListVC {
             showSpinner()
         }
         
-        networkClient.getReports(success: { [weak self] (reports) in
+        networkClient.getReports(success: { [weak self] (reportsData) in
             guard let self = self else { return }
-            self.reports = reports
+            self.reports = reportsData.results
             DispatchQueue.main.async {
                 self.refreshControl.endRefreshing()
                 self.hideSpinner()

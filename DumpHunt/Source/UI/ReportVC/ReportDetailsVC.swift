@@ -42,9 +42,15 @@ final class ReportDetailsVC: BaseVC {
 
     private func setReport() {
         
-        if let dumpImage = report?.photo {
-            dumpImageView.image = dumpImage
+        if let textUrl = report?.photoURL, let url = URL(string: textUrl) {
+            dumpImageView.kf.setImage(with: url,
+                                        placeholder: Utill.getPlaceholder(),
+                                        options: [.transition(.fade(1)),
+                                                  .cacheOriginalImage])
+        } else {
+            dumpImageView.image = Utill.getPlaceholder()
         }
+        
         
         if let latitude = report?.latitude {
             latitudeLabel.text = String(latitude)
@@ -61,29 +67,3 @@ final class ReportDetailsVC: BaseVC {
 
 }
 
-//extension ReportDetailsVC {
-//    
-//    struct ViewModel {
-//        var dumpImage: UIImage?
-//        let latitude: String?
-//        var longitude: String?
-//        let fio: String?
-//        let contact: String?
-//        var comment: String?
-//        
-//        init(dumpImage: UIImage?,
-//             latitude: String?,
-//             longitude: String?,
-//             fio: String?,
-//             contact: String?,
-//             comment: String?)
-//        {
-//            self.dumpImage = dumpImage
-//            self.latitude = latitude
-//            self.longitude = longitude
-//            self.fio = fio
-//            self.contact = contact
-//            self.comment = comment
-//        }
-//    }
-//}

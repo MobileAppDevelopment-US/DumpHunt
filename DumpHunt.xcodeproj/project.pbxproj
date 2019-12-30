@@ -16,6 +16,7 @@
 		CE31D9342387D15100E6FF2D /* TabBarVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE31D9332387D15100E6FF2D /* TabBarVC.storyboard */; };
 		CE31D9372387D1FB00E6FF2D /* ReportListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE31D9362387D1FB00E6FF2D /* ReportListVC.swift */; };
 		CE31D9392387D20600E6FF2D /* ReportListVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE31D9382387D20600E6FF2D /* ReportListVC.storyboard */; };
+		CE450ACE23BA582F00B3A844 /* ReportVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE450ACD23BA582F00B3A844 /* ReportVM.swift */; };
 		CE5ED0BB239D26D5004D8897 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5ED0BA239D26D5004D8897 /* Report.swift */; };
 		CE5ED0BD239D28A9004D8897 /* Extensions+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5ED0BC239D28A9004D8897 /* Extensions+UIImage.swift */; };
 		CE9B376123AFCB0600C26D20 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9B376023AFCB0600C26D20 /* NetworkClient.swift */; };
@@ -50,6 +51,7 @@
 		CE31D9332387D15100E6FF2D /* TabBarVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabBarVC.storyboard; sourceTree = "<group>"; };
 		CE31D9362387D1FB00E6FF2D /* ReportListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportListVC.swift; sourceTree = "<group>"; };
 		CE31D9382387D20600E6FF2D /* ReportListVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReportListVC.storyboard; sourceTree = "<group>"; };
+		CE450ACD23BA582F00B3A844 /* ReportVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportVM.swift; sourceTree = "<group>"; };
 		CE5ED0BA239D26D5004D8897 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		CE5ED0BC239D28A9004D8897 /* Extensions+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UIImage.swift"; sourceTree = "<group>"; };
 		CE9B376023AFCB0600C26D20 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				CE5ED0BA239D26D5004D8897 /* Report.swift */,
+				CE450ACD23BA582F00B3A844 /* ReportVM.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				CEBC26142387D2FD00738CB7 /* CreateReportVC.swift in Sources */,
 				CE31D9312387D09100E6FF2D /* DesignModel.swift in Sources */,
 				CE31D9372387D1FB00E6FF2D /* ReportListVC.swift in Sources */,
+				CE450ACE23BA582F00B3A844 /* ReportVM.swift in Sources */,
 				CEB1B07E238855150028D02C /* GoogleMapsVC.swift in Sources */,
 				CE9B376123AFCB0600C26D20 /* NetworkClient.swift in Sources */,
 				CE31D9152387CEC200E6FF2D /* AppDelegate.swift in Sources */,

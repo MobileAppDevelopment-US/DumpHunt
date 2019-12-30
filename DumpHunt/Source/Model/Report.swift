@@ -6,42 +6,45 @@
 //  Copyright © 2019 Serik_Klement. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 //MARK: - Report
 
+class ReportsData: Decodable {
+    enum CodingKeys: String, CodingKey {
+        case results
+    }
+    let results: [Report]
+}
+
 class Report: Codable
 {
-    var photo: UIImage?
-    var photoURL: String?
-    var fio: String?
-    var phone: String?
     var comment: String?
-    var latitude: String?
-    var longitude: String?
+    var photoURL: String?
+    var latitude: Double?
+    var longitude: Double?
+    var date: String?
 
     enum CodingKeys: String, CodingKey {
         case comment
         case photoURL = "photo"
         case latitude = "lat"
         case longitude = "long"
-        case fio = "feedback_info"
+        case date = "datetime_received"
     }
     
-    init(photo: UIImage? = nil,
+    init(comment: String? = nil,
          photoURL: String? = nil,
-         fio: String? = nil,
          phone: String? = nil,
-         comment: String? = nil,
-         latitude: String? = nil,
-         longitude: String? = nil)
+         latitude: Double? = nil,
+         longitude: Double? = nil,
+         date: String? = nil)
     {
-        self.photo = photo
-        self.fio = fio
-        self.phone = phone
+        self.photoURL = photoURL
         self.comment = comment
         self.latitude = latitude
         self.longitude = longitude
+        self.date = date
     }
     
     required init(from decoder: Decoder) throws {
@@ -49,8 +52,9 @@ class Report: Codable
 
         self.photoURL = try? values.decode(String.self, forKey: .photoURL)
         self.comment = try? values.decode(String.self, forKey: .comment)
-        self.latitude = try? values.decode(String.self, forKey: .latitude)
-        self.longitude = try? values.decode(String.self, forKey: .longitude)
+        self.latitude = try? values.decode(Double.self, forKey: .latitude)
+        self.longitude = try? values.decode(Double.self, forKey: .longitude)
+        self.date = try? values.decode(String.self, forKey: .date)
     }
     
     func encode(to encoder: Encoder) throws {
@@ -60,6 +64,7 @@ class Report: Codable
         try container .encode(comment, forKey: .comment)
         try container .encode(latitude, forKey: .latitude)
         try container .encode(longitude, forKey: .longitude)
+        try container .encode(date, forKey: .date)
     }
 }
 

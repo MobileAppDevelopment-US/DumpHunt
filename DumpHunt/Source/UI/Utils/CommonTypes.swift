@@ -10,5 +10,5 @@ import Foundation
 
 typealias VoidCompletion = (() -> Void)
 typealias ErrorCompletion = ((String) -> Void)
-typealias ReportsCompletion = (([Report]) -> Void)
+typealias ReportsCompletion = ((ReportsData) -> Void)
 typealias StringCompletion = ((String) -> Void)

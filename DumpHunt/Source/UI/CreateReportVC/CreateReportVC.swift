@@ -19,7 +19,7 @@ final class CreateReportVC: BaseVC {
     @IBOutlet var postReportButton: UIButton!
     @IBOutlet var openMapButton: UIButton!
 
-    var report = Report()
+    var reportVM = ReportVM()
 
     // MARK: - Lifecycle
     
@@ -41,8 +41,8 @@ final class CreateReportVC: BaseVC {
     // Mark: Actions
     
     @IBAction func mapActionButton(_ sender: UIButton) {
-        report.latitude = nil
-        report.longitude = nil
+        reportVM.latitude = nil
+        reportVM.longitude = nil
         gpsLabel.text = ""
         gpsLabel.isHidden = true
         showGoogleMapsVC()
@@ -108,7 +108,7 @@ final class CreateReportVC: BaseVC {
     }
     
     private func isEnabledPostReportButton() {
-        if report.photo != nil && report.latitude != nil && report.longitude != nil {
+        if reportVM.photo != nil && reportVM.latitude != nil && reportVM.longitude != nil {
             selectedPostReportButton()
         } else {
             notSelectedPostReportButton()
@@ -126,7 +126,7 @@ extension CreateReportVC {
         postReportButton.isUserInteractionEnabled = false
         showSpinner()
         
-        networkClient.postSaveReport(report: report,
+        networkClient.postSaveReport(reportVM: reportVM,
                                      success: { [weak self] () in
                                         guard let self = self else { return }
                                         self.postReportButton.isUserInteractionEnabled = true
@@ -146,7 +146,7 @@ extension CreateReportVC {
     }
     
     private func dataCleaning() {
-        report = Report()
+        reportVM = ReportVM()
         dumpImageView.image = UIImage(named: "addPhotoPlaceholder.jpg")
         gpsLabel.text = ""
         gpsLabel.isHidden = true
@@ -227,7 +227,7 @@ extension CreateReportVC: UINavigationControllerDelegate, UIImagePickerControlle
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let chosenImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         let orientationFixedImage = chosenImage.fixOrientation()
-        report.photo = orientationFixedImage
+        reportVM.photo = orientationFixedImage
         dumpImageView.image = orientationFixedImage
         isEnabledPostReportButton()
         dismiss(animated:true, completion: nil)
@@ -258,8 +258,8 @@ extension CreateReportVC: CreateReportVCDelegate {
     func setCurrentCoordinate(latitude: Double?, longitude: Double?) {
         
         if let latitude = latitude, let longitude = longitude {
-            report.latitude = String(latitude)
-            report.longitude = String(longitude)
+            reportVM.latitude = String(latitude)
+            reportVM.longitude = String(longitude)
             gpsLabel.text = "  GPS: \(latitude)  \(longitude)"
             gpsLabel.isHidden = false
             isEnabledPostReportButton()
@@ -276,7 +276,7 @@ extension CreateReportVC: CreateReportVCDelegate {
 extension CreateReportVC: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
-        report.comment = textView.text
+        reportVM.comment = textView.text
     }
     
 }
@@ -295,11 +295,11 @@ extension CreateReportVC: UITextFieldDelegate {
         let text = textFieldText.replacingCharacters(in: textRange, with: string)
         
         if textField == fioTextField {
-            report.fio = text
+            reportVM.fio = text
         }
         
         if textField == phoneTextField {
-            report.phone = text
+            reportVM.phone = text
         }
         
         return true

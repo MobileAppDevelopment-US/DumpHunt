@@ -31,30 +31,30 @@ final class NetworkClient: NSObject {
     static let ApiUrlPath = "http://teachyourself.pythonanywhere.com/api/v1"
 
     private let PostReport = "\(ApiUrlPath)/reports/"
-    private let GetReports = "\(ApiUrlPath)/reports/"
+    private let GetReports = "\(ApiUrlPath)/reports/?page=1"
 
     // MARK: - Methods
     
-    func postSaveReport(report: Report?,
+    func postSaveReport(reportVM: ReportVM?,
                         success: VoidCompletion?,
                         failure: ErrorCompletion?) {
         
-        guard let latitude = report?.latitude,
-            let longitude = report?.longitude else {
+        guard let latitude = reportVM?.latitude,
+            let longitude = reportVM?.longitude else {
                 failure?("Отсутствуют координаты")
                 return
         }
 
-        let fio = report?.fio ?? ""
-        let phone = report?.phone ?? ""
-        let comment = report?.comment ?? ""
+        let fio = reportVM?.fio ?? ""
+        let phone = reportVM?.phone ?? ""
+        let comment = reportVM?.comment ?? ""
 
         let parameters: [String : Any] = ["lat": latitude,
                                           "long": longitude,
                                           "feedback_info": "ФИО - \(fio);  Номер телефона - \(phone);  Комментарий - \(comment)"]
 
         var imageData: Data!
-        if let image = report?.photo {
+        if let image = reportVM?.photo {
             imageData = image.jpegData(compressionQuality: 0.5)
         } 
         
@@ -78,7 +78,7 @@ final class NetworkClient: NSObject {
                     return
             }
 
-            Utill.printInTOConsole("response = \(String(data: data, encoding: .utf8) ?? "")")
+            Utill.printInTOConsole("PostReport = \(String(data: data, encoding: .utf8) ?? "")")
             
             switch response.result {
             case .success:
@@ -110,11 +110,12 @@ final class NetworkClient: NSObject {
                             failure?("Ошибка сервера")
                             return
                     }
-                    
+                    Utill.printInTOConsole("GetReports = \(String(data: data, encoding: .utf8) ?? "")")
+
                     switch response.result {
                     case .success:
-                        if let reports = self.reportsMap(data: data) {
-                            success?(reports)
+                        if let reportsData = self.reportsDataMap(data: data) {
+                            success?(reportsData)
                         }
                         break
                         
@@ -135,9 +136,9 @@ final class NetworkClient: NSObject {
 
 extension NetworkClient {
 
-    private func reportsMap(data: Data?) -> [Report]? {
+    private func reportsDataMap(data: Data?) -> ReportsData? {
         guard let data = data else { return nil }
-        let report: [Report] = [try! JSONDecoder().decode(Report.self, from: data)]
+        let report: ReportsData = try! JSONDecoder().decode(ReportsData.self, from: data)
         return report
     }
     

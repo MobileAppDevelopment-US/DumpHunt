@@ -12,6 +12,8 @@ import Kingfisher
 final class ReportListCell: UITableViewCell {
     
     @IBOutlet var dumpImageView: UIImageView!
+    @IBOutlet var dateLabel: UILabel!
+
     @IBOutlet var gpsLabel: UILabel!
     @IBOutlet var commentLabel: UILabel!
     @IBOutlet var bottomView: UIView!
@@ -19,9 +21,6 @@ final class ReportListCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        selectionStyle = .none
-        bottomView.backgroundColor = Design.orange
-
     }
     
     func setReport(_ report: Report?) {
@@ -35,16 +34,17 @@ final class ReportListCell: UITableViewCell {
             dumpImageView.image = Utill.getPlaceholder()
         }
         
-        if let latitude = report?.latitude, let longitude = report?.longitude{
-            gpsLabel.text = latitude + longitude
-        }
-        
-        if let comment = report?.comment {
-            commentLabel.text = comment
-        }
+        dateLabel.text = Utill.getFormattedDate(string: report?.date)
+//        if let latitude = report?.latitude, let longitude = report?.longitude{
+//            gpsLabel.text = latitude + longitude
+//        }
+//        
+//        if let comment = report?.comment {
+//            commentLabel.text = comment
+//        }
         
         selectionStyle = .none
-        bottomView.backgroundColor = Design.orange
+        bottomView.backgroundColor = Design.lightGray
     }
     
 }
