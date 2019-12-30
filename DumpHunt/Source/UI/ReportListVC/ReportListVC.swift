@@ -13,8 +13,8 @@ final class ReportListVC: BaseVC {
     @IBOutlet weak var tableView: UITableView!
 
     var reports = [Report]()
-    var refreshControl: UIRefreshControl!
     var isGetReports: Bool = true
+    var refreshControl: UIRefreshControl!
 
     // MARK: - Lifecycle
 

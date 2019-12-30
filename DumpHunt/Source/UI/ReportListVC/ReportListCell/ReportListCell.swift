@@ -14,12 +14,14 @@ final class ReportListCell: UITableViewCell {
     @IBOutlet var dumpImageView: UIImageView!
     @IBOutlet var gpsLabel: UILabel!
     @IBOutlet var commentLabel: UILabel!
-    
+    @IBOutlet var bottomView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         selectionStyle = .none
+        bottomView.backgroundColor = Design.orange
+
     }
     
     func setReport(_ report: Report?) {
@@ -42,6 +44,7 @@ final class ReportListCell: UITableViewCell {
         }
         
         selectionStyle = .none
+        bottomView.backgroundColor = Design.orange
     }
     
 }

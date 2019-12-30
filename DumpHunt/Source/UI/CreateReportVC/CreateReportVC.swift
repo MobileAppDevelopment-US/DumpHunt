@@ -20,7 +20,7 @@ final class CreateReportVC: BaseVC {
     @IBOutlet var openMapButton: UIButton!
 
     var report = Report()
-    
+
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -45,7 +45,6 @@ final class CreateReportVC: BaseVC {
         report.longitude = nil
         gpsLabel.text = ""
         gpsLabel.isHidden = true
-        
         showGoogleMapsVC()
     }
     
@@ -115,7 +114,7 @@ final class CreateReportVC: BaseVC {
             notSelectedPostReportButton()
         }
     }
-    
+
 }
 
 // MARK: - NetworkClient

@@ -31,7 +31,7 @@ final class NetworkClient: NSObject {
     static let ApiUrlPath = "http://teachyourself.pythonanywhere.com/api/v1"
 
     private let PostReport = "\(ApiUrlPath)/reports/"
-    private let GetReports = "\(ApiUrlPath)/reports/" //Изменить!!!!
+    private let GetReports = "\(ApiUrlPath)/reports/"
 
     // MARK: - Methods
     
@@ -114,8 +114,8 @@ final class NetworkClient: NSObject {
                     switch response.result {
                     case .success:
                         if let reports = self.reportsMap(data: data) {
-                        success?(reports)
-                         }
+                            success?(reports)
+                        }
                         break
                         
                     case .failure:
