@@ -155,7 +155,7 @@ extension GoogleMapsVC: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
+        Utill.printInTOConsole(error)
     }
     
 }
