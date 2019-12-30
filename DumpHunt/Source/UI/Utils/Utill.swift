@@ -20,17 +20,15 @@ final class Utill: NSObject {
         return UIImage(named: "placeholder")!
     }
     
-    class func getFormattedDate(string: String?) -> String {
-        
-        guard let dateString = string else { return "" }
-        
+    class func getFormattedDate(string: String) -> String {
+                
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(identifier: "UTC")
         dateFormatter.locale = Locale(identifier: "ru_RU")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ" // This formate is input formated .
         
-        guard let date = dateFormatter.date(from: dateString) else { return "" }
-        dateFormatter.dateFormat = "dd-MMM-yyyy" // Output Formated
+        guard let date = dateFormatter.date(from: string) else { return "" }
+        dateFormatter.dateFormat = "ddMMM yyyy  HH:mm" // Output Formated
         
         return dateFormatter.string(from: date)
     }

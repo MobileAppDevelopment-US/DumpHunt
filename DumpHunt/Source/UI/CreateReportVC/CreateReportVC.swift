@@ -246,6 +246,7 @@ extension CreateReportVC {
             return
         }
         vc.delegate = self
+        vc.typeVC = .show
         pushViewController(vc)
     }
     

@@ -13,8 +13,9 @@ final class ReportListCell: UITableViewCell {
     
     @IBOutlet var dumpImageView: UIImageView!
     @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var latitudeLabel: UILabel!
+    @IBOutlet var longitudeLabel: UILabel!
 
-    @IBOutlet var gpsLabel: UILabel!
     @IBOutlet var commentLabel: UILabel!
     @IBOutlet var bottomView: UIView!
     
@@ -34,14 +35,21 @@ final class ReportListCell: UITableViewCell {
             dumpImageView.image = Utill.getPlaceholder()
         }
         
-        dateLabel.text = Utill.getFormattedDate(string: report?.date)
-//        if let latitude = report?.latitude, let longitude = report?.longitude{
-//            gpsLabel.text = latitude + longitude
-//        }
-//        
-//        if let comment = report?.comment {
-//            commentLabel.text = comment
-//        }
+        if let date = report?.date {
+            dateLabel.text = Utill.getFormattedDate(string: date)
+        }
+
+        if let latitude = report?.latitude {
+            latitudeLabel.text = "Долгота: \(latitude)"
+        }
+        
+        if let longitude = report?.longitude{
+            longitudeLabel.text = "Широта: \(longitude)"
+        }
+        
+        if let comment = report?.comment {
+            commentLabel.text = comment
+        }
         
         selectionStyle = .none
         bottomView.backgroundColor = Design.lightGray

@@ -17,8 +17,10 @@ open class DesignModel {
     
     // Fonts Size
     
+    static let sourceSansProRegular: String = "SourceSansPro-Regular"
+
     static let small: CGFloat = 13.0
-    static let medium: CGFloat = 16.0
+    static let medium: CGFloat = 14.0
     static let standart: CGFloat = 17.0
     static let big: CGFloat = 20.0
 

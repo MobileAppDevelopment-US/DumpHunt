@@ -17,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
+        UILabel.appearance().font = UIFont(name: Design.sourceSansProRegular, size: Design.medium)
+
         GMSServices.provideAPIKey("AIzaSyCZeTgAhBUfnrL63b4KY2BSz1TLoZanlnU")
         IQKeyboardManager.shared.enable = true
         openFirstScreen()

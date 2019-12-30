@@ -17,6 +17,7 @@ final class ReportDetailsVC: BaseVC {
     @IBOutlet var dumpImageView: UIImageView!
     @IBOutlet var latitudeLabel: UILabel!
     @IBOutlet var longitudeLabel: UILabel!
+    @IBOutlet var dateLabel: UILabel!
     @IBOutlet var commentTextView: UITextView!
 
     var report: Report?
@@ -37,6 +38,10 @@ final class ReportDetailsVC: BaseVC {
         
         delegate?.setIsGetReports(false)
     }
+        
+    @IBAction func mapActionButton(_ sender: UIButton) {
+        showGoogleMapsVC()
+    }
     
     // Mark: Methods
 
@@ -51,7 +56,6 @@ final class ReportDetailsVC: BaseVC {
             dumpImageView.image = Utill.getPlaceholder()
         }
         
-        
         if let latitude = report?.latitude {
             latitudeLabel.text = String(latitude)
         }
@@ -60,6 +64,10 @@ final class ReportDetailsVC: BaseVC {
             longitudeLabel.text = String(longitude)
         }
 
+        if let date = report?.date {
+            dateLabel.text = Utill.getFormattedDate(string: date)
+        }
+        
         if let comment = report?.comment {
             commentTextView.text = comment
         }
@@ -67,3 +75,20 @@ final class ReportDetailsVC: BaseVC {
 
 }
 
+// MARK: - Transition
+
+extension ReportDetailsVC {
+    
+    private func showGoogleMapsVC() {
+        
+        let storyboard = UIStoryboard(name: "GoogleMapsVC", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "GoogleMapsVC") as? GoogleMapsVC else {
+            return
+        }
+        vc.typeVC = .open
+        vc.latitude = report?.latitude
+        vc.longitude = report?.longitude
+        pushViewController(vc)
+    }
+    
+}

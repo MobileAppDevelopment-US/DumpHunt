@@ -101,13 +101,6 @@ extension ReportListVC {
         guard let vc = loginVCStoryboard.instantiateViewController(withIdentifier: "ReportDetailsVC") as? ReportDetailsVC else {
             return
         }
-//        let report = Report(photo: UIImage(named: "hunt.jpg"),
-//                            fio: "Serik",
-//                            phone: "90987978979",
-//                            comment: "Здесь очень грязно",
-//                            latitude: "64.513695",
-//                            longitude: "40.507912")
-       // vc.report = report
         vc.delegate = self
         vc.report = reports[indexPath.row]
         pushViewController(vc)

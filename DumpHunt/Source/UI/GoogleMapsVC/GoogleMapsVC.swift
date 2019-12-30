@@ -15,6 +15,10 @@ protocol CreateReportVCDelegate: class {
 
 final class GoogleMapsVC: BaseVC {
     
+    enum TypeVC: Int {
+        case open = 0
+        case show
+    }
     var mapView = GMSMapView()
     var currentMarker = GMSMarker()
     weak var delegate: CreateReportVCDelegate?
@@ -22,13 +26,20 @@ final class GoogleMapsVC: BaseVC {
     var isLocation: Bool = true
     var latitude: Double?
     var longitude: Double?
+    var typeVC: TypeVC = .open
     
     // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getLocation()
+        switch typeVC {
+        case .show:
+            getLocation()
+            break
+        case .open:
+            showMapView()
+        }
     }
     
     // Mark: Actions
