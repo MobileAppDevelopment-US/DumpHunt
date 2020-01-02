@@ -12,10 +12,11 @@ typealias Design = DesignModel
 
 open class DesignModel {
     
-    // API
+    // URL
 
     static let ApiUrlPath = "http://teachyourself.pythonanywhere.com/api/v1"
-    
+    static let SitePath = "https://www.ecolog29.ru/"
+
     // Key
 
     static let keyLatitude: String = "keyLatitude"

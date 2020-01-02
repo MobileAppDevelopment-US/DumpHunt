@@ -27,21 +27,34 @@
         <!--О проекте-->
         <scene sceneID="eYH-u8-sye">
             <objects>
-                <viewController storyboardIdentifier="AboutProjectVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RGN-rs-ZeW" customClass="AboutProjectVC" customModule="DumpHunt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AboutProjectVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RGN-rs-ZeW" customClass="AboutProjectVC" customModule="Охота_на_свалку" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3P1-zr-j6z">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoLink" translatesAutoresizingMaskIntoConstraints="NO" id="6h2-wJ-Nbn">
-                                <rect key="frame" x="40" y="108" width="334" height="50"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1LK-em-7Yg">
+                                <rect key="frame" x="20" y="103" width="374" height="60"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoLink" translatesAutoresizingMaskIntoConstraints="NO" id="6h2-wJ-Nbn">
+                                        <rect key="frame" x="30" y="5" width="314" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="nzE-bU-mDC"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="nzE-bU-mDC"/>
+                                    <constraint firstAttribute="trailing" secondItem="6h2-wJ-Nbn" secondAttribute="trailing" constant="30" id="05j-Ew-5Jd"/>
+                                    <constraint firstAttribute="bottom" secondItem="6h2-wJ-Nbn" secondAttribute="bottom" constant="5" id="Ggh-cv-PKc"/>
+                                    <constraint firstItem="6h2-wJ-Nbn" firstAttribute="top" secondItem="1LK-em-7Yg" secondAttribute="top" constant="5" id="JEi-bU-jMb"/>
+                                    <constraint firstItem="6h2-wJ-Nbn" firstAttribute="leading" secondItem="1LK-em-7Yg" secondAttribute="leading" constant="30" id="fF2-ps-ipo"/>
+                                    <constraint firstAttribute="height" constant="60" id="wqA-Gx-eFw"/>
                                 </constraints>
-                            </imageView>
+                            </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezk-gH-Mti">
                                 <rect key="frame" x="20" y="178" width="374" height="635"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <string key="text">Пожаловаться на свалки и другие эконарушения 
+                                <mutableString key="text">Пожаловаться на свалки и другие эконарушения 
 
 Приложение «Охота за свалкой» создано для общественного контроля работы регионального оператора по обращению с отходами Архангельской области, а также теми предприятиями или конкретными лицами, которые наносят вред окружающей среде.
 
@@ -56,7 +69,7 @@
 Просто сфотографируйте объект нарушения, обозначьте координаты на карте и по желанию опишите парой слов проблему. Редакция проекта «Экология Поморья» Ecolog29.ru обработает ваше письмо и направит запросы в тот орган, который уполномочен устранить нарушение.
 
 О результатах будем отчитываться, а наиболее интересные и резонансные дела публиковать в нашей группе ВК @ecologist29 и в телеграм-канале @ecolog29
-</string>
+</mutableString>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -64,12 +77,12 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="1LK-em-7Yg" firstAttribute="top" secondItem="7eo-KB-eSL" secondAttribute="top" constant="15" id="1xI-aR-JpA"/>
                             <constraint firstItem="7eo-KB-eSL" firstAttribute="bottom" secondItem="ezk-gH-Mti" secondAttribute="bottom" id="3oY-H0-4MX"/>
-                            <constraint firstItem="6h2-wJ-Nbn" firstAttribute="leading" secondItem="7eo-KB-eSL" secondAttribute="leading" constant="40" id="77A-OZ-ddB"/>
-                            <constraint firstItem="7eo-KB-eSL" firstAttribute="trailing" secondItem="6h2-wJ-Nbn" secondAttribute="trailing" constant="40" id="GP3-0s-S2t"/>
-                            <constraint firstItem="6h2-wJ-Nbn" firstAttribute="top" secondItem="7eo-KB-eSL" secondAttribute="top" constant="20" id="Ybd-7g-jSZ"/>
+                            <constraint firstItem="7eo-KB-eSL" firstAttribute="trailing" secondItem="1LK-em-7Yg" secondAttribute="trailing" constant="20" id="WXQ-yc-p6g"/>
+                            <constraint firstItem="ezk-gH-Mti" firstAttribute="top" secondItem="1LK-em-7Yg" secondAttribute="bottom" constant="15" id="ag4-Vc-oX3"/>
                             <constraint firstItem="ezk-gH-Mti" firstAttribute="leading" secondItem="7eo-KB-eSL" secondAttribute="leading" constant="20" id="j5r-5X-yGE"/>
-                            <constraint firstItem="ezk-gH-Mti" firstAttribute="top" secondItem="6h2-wJ-Nbn" secondAttribute="bottom" constant="20" id="xya-KL-ski"/>
+                            <constraint firstItem="1LK-em-7Yg" firstAttribute="leading" secondItem="7eo-KB-eSL" secondAttribute="leading" constant="20" id="umm-VG-qYL"/>
                             <constraint firstItem="7eo-KB-eSL" firstAttribute="trailing" secondItem="ezk-gH-Mti" secondAttribute="trailing" constant="20" id="yFK-1Z-4vr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7eo-KB-eSL"/>
@@ -78,6 +91,9 @@
                     <navigationItem key="navigationItem" title="О проекте" id="2y9-WW-N6B"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="iconView" destination="1LK-em-7Yg" id="TPF-cX-XQH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9mm-Ex-krn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
