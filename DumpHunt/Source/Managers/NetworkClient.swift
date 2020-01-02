@@ -31,7 +31,8 @@ final class NetworkClient: NSObject {
     static let ApiUrlPath = "http://teachyourself.pythonanywhere.com/api/v1"
 
     private let PostReport = "\(ApiUrlPath)/reports/"
-    private let GetReports = "\(ApiUrlPath)/reports/?page=1"
+    //private let GetReports = "\(ApiUrlPath)/reports/?page=1"
+    private let GetReports = "\(ApiUrlPath)/reports/"
 
     // MARK: - Methods
     
@@ -56,7 +57,7 @@ final class NetworkClient: NSObject {
         var imageData: Data!
         if let image = reportVM?.photo {
             imageData = image.jpegData(compressionQuality: 0.5)
-        } 
+        }
         
         AF.upload(multipartFormData: { multipartFormData in
             for (key, value) in parameters {

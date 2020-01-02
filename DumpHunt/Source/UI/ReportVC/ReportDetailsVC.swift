@@ -18,7 +18,6 @@ final class ReportDetailsVC: BaseVC {
     @IBOutlet var latitudeLabel: UILabel!
     @IBOutlet var longitudeLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
-    @IBOutlet var commentTextView: UITextView!
 
     var report: Report?
     weak var delegate: ReportListVCDelegate?
@@ -67,10 +66,7 @@ final class ReportDetailsVC: BaseVC {
         if let date = report?.date {
             dateLabel.text = Utill.getFormattedDate(string: date)
         }
-        
-        if let comment = report?.comment {
-            commentTextView.text = comment
-        }
+
     }
 
 }

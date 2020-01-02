@@ -26,6 +26,9 @@ final class ReportListCell: UITableViewCell {
     
     func setReport(_ report: Report?) {
 
+        dumpImageView.layer.cornerRadius = 10.0
+        dumpImageView.layer.masksToBounds = true
+        
         if let textUrl = report?.photoURL, let url = URL(string: textUrl) {
             dumpImageView.kf.setImage(with: url,
                                         placeholder: Utill.getPlaceholder(),
@@ -45,10 +48,6 @@ final class ReportListCell: UITableViewCell {
         
         if let longitude = report?.longitude{
             longitudeLabel.text = "Широта: \(longitude)"
-        }
-        
-        if let comment = report?.comment {
-            commentLabel.text = comment
         }
         
         selectionStyle = .none

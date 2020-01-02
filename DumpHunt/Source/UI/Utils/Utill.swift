@@ -23,13 +23,12 @@ final class Utill: NSObject {
     class func getFormattedDate(string: String) -> String {
                 
         let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = TimeZone(identifier: "UTC")
-        dateFormatter.locale = Locale(identifier: "ru_RU")
+        //dateFormatter.timeZone = TimeZone(identifier: "UTC")
+        //dateFormatter.locale = Locale(identifier: "ru_RU")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         
         guard let date = dateFormatter.date(from: string) else { return "" }
-        //dateFormatter.dateFormat = "ddMMM yyyy  HH:mm"
-        dateFormatter.dateFormat = "ddMMM yyyy"
+        dateFormatter.dateFormat = "dd.MMM.yyyy  HH:mm"
 
         return dateFormatter.string(from: date)
     }
