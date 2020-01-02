@@ -11,8 +11,12 @@ import JGProgressHUD
 
 class BaseVC: UIViewController {
 
+    // MARK: - Properties
+
     private var hud: JGProgressHUD?
     let networkClient = NetworkClient()
+
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()

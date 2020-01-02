@@ -14,10 +14,14 @@ protocol ReportListVCDelegate: class {
 
 final class ReportDetailsVC: BaseVC {
 
+    // MARK: - Outlets
+
     @IBOutlet var dumpImageView: UIImageView!
     @IBOutlet var latitudeLabel: UILabel!
     @IBOutlet var longitudeLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
+
+    // MARK: - Properties
 
     var report: Report?
     weak var delegate: ReportListVCDelegate?

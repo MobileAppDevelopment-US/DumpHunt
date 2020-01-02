@@ -8,7 +8,7 @@
 
 import Foundation
 
-//MARK: - Report
+// MARK: - Report
 
 class ReportsData: Decodable {
     enum CodingKeys: String, CodingKey {
@@ -17,8 +17,7 @@ class ReportsData: Decodable {
     let results: [Report]
 }
 
-class Report: Codable
-{
+class Report: Codable {
     var photoURL: String?
     var latitude: Double?
     var longitude: Double?

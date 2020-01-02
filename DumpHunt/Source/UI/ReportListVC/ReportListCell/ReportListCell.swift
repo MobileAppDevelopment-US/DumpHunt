@@ -11,29 +11,26 @@ import Kingfisher
 
 final class ReportListCell: UITableViewCell {
     
+    // MARK: - Outlets
+    
     @IBOutlet var dumpImageView: UIImageView!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var latitudeLabel: UILabel!
     @IBOutlet var longitudeLabel: UILabel!
-
-    @IBOutlet var commentLabel: UILabel!
     @IBOutlet var bottomView: UIView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-    }
+    // MARK: - Methods
     
     func setReport(_ report: Report?) {
-
+        
         dumpImageView.layer.cornerRadius = 10.0
         dumpImageView.layer.masksToBounds = true
         
         if let textUrl = report?.photoURL, let url = URL(string: textUrl) {
             dumpImageView.kf.setImage(with: url,
-                                        placeholder: Utill.getPlaceholder(),
-                                        options: [.transition(.fade(1)),
-                                                  .cacheOriginalImage])
+                                      placeholder: Utill.getPlaceholder(),
+                                      options: [.transition(.fade(1)),
+                                                .cacheOriginalImage])
         } else {
             dumpImageView.image = Utill.getPlaceholder()
         }
@@ -41,7 +38,7 @@ final class ReportListCell: UITableViewCell {
         if let date = report?.date {
             dateLabel.text = Utill.getFormattedDate(string: date)
         }
-
+        
         if let latitude = report?.latitude {
             latitudeLabel.text = "Долгота: \(latitude)"
         }

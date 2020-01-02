@@ -28,11 +28,10 @@ final class NetworkClient: NSObject {
         return NetworkReachabilityManager()!.isReachable
     }
     
-    static let ApiUrlPath = "http://teachyourself.pythonanywhere.com/api/v1"
-
-    private let PostReport = "\(ApiUrlPath)/reports/"
-    //private let GetReports = "\(ApiUrlPath)/reports/?page=1"
-    private let GetReports = "\(ApiUrlPath)/reports/"
+    // MARK: - API
+    
+    private let PostReport = "\(Design.ApiUrlPath)/reports/"
+    private let GetReports = "\(Design.ApiUrlPath)/reports/"
 
     // MARK: - Methods
     

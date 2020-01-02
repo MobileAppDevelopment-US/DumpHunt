@@ -28,7 +28,7 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>$(PRODUCT_NAME) camera use</string>
+	<string>$(PRODUCT_NAME) хочет использовать камеру</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>$(PRODUCT_NAME) хочет использовать ваше местоположение чтобы показать координаты свалки.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
@@ -36,7 +36,7 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>$(PRODUCT_NAME) хочет использовать ваше местоположение чтобы показать координаты свалки.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>$(PRODUCT_NAME) photo use</string>
+	<string>$(PRODUCT_NAME) хочет использовать альбом</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>SourceSansPro-Regular.ttf</string>

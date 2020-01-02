@@ -12,29 +12,29 @@ typealias Design = DesignModel
 
 open class DesignModel {
     
-     static let keyLatitude: String = "keyLatitude"
-     static let keyLongitude: String = "keyLongitude"
+    // API
+
+    static let ApiUrlPath = "http://teachyourself.pythonanywhere.com/api/v1"
     
-    // Fonts Size
+    // Key
+
+    static let keyLatitude: String = "keyLatitude"
+    static let keyLongitude: String = "keyLongitude"
+    static let keyShowRequestLocation: String = "keyShowRequestLocation"
+    static let keyProvideAPI: String = "AIzaSyCZeTgAhBUfnrL63b4KY2BSz1TLoZanlnU"
+    
+    // Fonts
     
     static let sourceSansProRegular: String = "SourceSansPro-Regular"
+    
+    // Fonts Size
 
-    static let small: CGFloat = 13.0
     static let medium: CGFloat = 14.0
-    static let standart: CGFloat = 17.0
-    static let big: CGFloat = 20.0
-
+    
     // Colors
     
-    public static var black: UIColor { return .black }
     public static var white: UIColor { return .white }
     public static var lightGray: UIColor { return .lightGray }
-
-    public static var blue: UIColor { return UIColor(red: 5.0/255.0,
-                                                     green: 124.0/255.0,
-                                                     blue: 255.0/255.0,
-                                                     alpha: 1.0)
-    }
     
     public static var green: UIColor { return UIColor(red: 44.0/255.0,
                                                       green: 181.0/255.0,

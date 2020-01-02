@@ -12,6 +12,8 @@ final class ReportListVC: BaseVC {
 
     @IBOutlet weak var tableView: UITableView!
 
+    // MARK: - Properties
+
     var reports = [Report]()
     var isGetReports: Bool = true
     var refreshControl: UIRefreshControl!
@@ -126,6 +128,7 @@ extension ReportListVC {
         networkClient.getReports(success: { [weak self] (reportsData) in
             guard let self = self else { return }
             self.reports = reportsData.results
+            
             DispatchQueue.main.async {
                 self.refreshControl.endRefreshing()
                 self.hideSpinner()
@@ -146,6 +149,7 @@ extension ReportListVC {
         let alert = UIAlertController(title: nil,
                                       message: message,
                                       preferredStyle: .alert)
+        
         alert.addAction(UIAlertAction(title: "Ok",
                                       style: .default,
                                       handler: { _ in

@@ -11,6 +11,8 @@ import CoreLocation
 
 final class CreateReportVC: BaseVC {
     
+    // MARK: - Outlets
+
     @IBOutlet var dumpImageView: UIImageView!
     @IBOutlet var descriptionTextView: UITextView!
     @IBOutlet var fioTextField: UITextField!
@@ -267,7 +269,6 @@ extension CreateReportVC: CreateReportVCDelegate {
         } else {
             gpsLabel.isHidden = true
         }
-        Utill.printInTOConsole(">>> setCurrentCoordinate = \(String(describing: latitude)) \(String(describing: longitude))")
     }
     
 }

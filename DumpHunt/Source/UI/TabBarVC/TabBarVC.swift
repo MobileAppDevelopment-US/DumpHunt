@@ -11,7 +11,7 @@ import UIKit
 class TabBarVC: UITabBarController {
 
     // MARK: - Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -19,7 +19,7 @@ class TabBarVC: UITabBarController {
     }
     
     // Mark: Methods
-
+    
     private func configure() {
                 
         let appearance = UITabBarItem.appearance()

@@ -18,17 +18,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         UILabel.appearance().font = UIFont(name: Design.sourceSansProRegular, size: Design.medium)
-
-        GMSServices.provideAPIKey("AIzaSyCZeTgAhBUfnrL63b4KY2BSz1TLoZanlnU")
+        GMSServices.provideAPIKey(Design.keyProvideAPI)
         IQKeyboardManager.shared.enable = true
         openFirstScreen()
+        
         return true
     }
 
-    private func openFirstScreen()
-    {
-        window = UIWindow(frame: UIScreen.main.bounds)
+    private func openFirstScreen() {
         
+        window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "TabBarVC", bundle: nil)
         let tabBarVC = storyboard.instantiateViewController(withIdentifier: "TabBarVC") as? TabBarVC
         window?.rootViewController = tabBarVC

@@ -9,6 +9,9 @@
 import UIKit
 import GoogleMaps
 
+fileprivate let ArkhangelskLatitude: Double = 64.542227
+fileprivate let ArkhangelskLongitude: Double = 40.563143
+
 protocol CreateReportVCDelegate: class {
     func setCurrentCoordinate(latitude: Double?, longitude: Double?)
 }
@@ -19,14 +22,25 @@ final class GoogleMapsVC: BaseVC {
         case open = 0
         case show
     }
+    // MARK: - Properties
+
     var mapView = GMSMapView()
     var currentMarker = GMSMarker()
-    weak var delegate: CreateReportVCDelegate?
-    let locationManager = CLLocationManager()
     var isLocation: Bool = true
     var latitude: Double?
     var longitude: Double?
     var typeVC: TypeVC = .open
+    weak var delegate: CreateReportVCDelegate?
+
+    lazy var locationManager: CLLocationManager = {
+        var _locationManager = CLLocationManager()
+        _locationManager.delegate = self
+        _locationManager.distanceFilter = 10.0
+        _locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        _locationManager.startMonitoringSignificantLocationChanges()
+        
+        return _locationManager
+    }()
     
     // MARK: Lifecycle
     
@@ -47,7 +61,8 @@ final class GoogleMapsVC: BaseVC {
     override func leftButtonAction(_ button: UIBarButtonItem) {
         super.leftButtonAction(button)
         
-        delegate?.setCurrentCoordinate(latitude: latitude, longitude: longitude)
+        delegate?.setCurrentCoordinate(latitude: latitude,
+                                       longitude: longitude)
     }
     
     // Mark: Methods
@@ -55,25 +70,21 @@ final class GoogleMapsVC: BaseVC {
     private func getLocation() {
         
         if CLLocationManager.locationServicesEnabled() {
-            
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            
+                        
             switch CLLocationManager.authorizationStatus() {
                 
             case .notDetermined:
-                locationManager.startUpdatingLocation()
                 locationManager.requestAlwaysAuthorization()
+                locationManager.startUpdatingLocation()
                 break
                 
             case .denied, .restricted:
                 showDisabledLocationAlert()
                 break
                 
-            case .authorizedAlways, .authorizedWhenInUse :
+            case .authorizedAlways, .authorizedWhenInUse:
                 isLocation = true
                 locationManager.startUpdatingLocation()
-                locationManager.startMonitoringSignificantLocationChanges()
                 break
                 
             default:
@@ -86,8 +97,8 @@ final class GoogleMapsVC: BaseVC {
     
     private func showMapView() {
         
-        let latitude = self.latitude ?? DefaultLocation.Arkhangelsk.latitude
-        let longitude = self.longitude ?? DefaultLocation.Arkhangelsk.longitude
+        let latitude = self.latitude ?? ArkhangelskLatitude
+        let longitude = self.longitude ?? ArkhangelskLongitude
         
         let camera = GMSCameraPosition.camera(withLatitude: latitude,
                                               longitude: longitude,
@@ -113,12 +124,12 @@ final class GoogleMapsVC: BaseVC {
     private func showDisabledLocationAlert() {
         
         let accessAlert = UIAlertController(title: "Определение местоположения отключено",
-                                            message: "Вам необходимо включить определениt местоположения в настройках.",
+                                            message: "Вам необходимо включить определение местоположения: Настройки -> Конфиденциальность -> Служба определения местоположения -> Охота на свалку",
                                             preferredStyle: .alert)
         
-        accessAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
-            UIApplication.shared.open(NSURL(string: UIApplication.openSettingsURLString)! as URL)
-        }))
+        accessAlert.addAction(UIAlertAction(title: "OK",
+                                            style: .default,
+                                            handler: nil))
         
         accessAlert.addAction(UIAlertAction(title: "Отмена",
                                             style: .cancel,
@@ -135,19 +146,18 @@ extension GoogleMapsVC: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        guard let coordinate: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        manager.stopUpdatingLocation()
-        
         if isLocation {
             isLocation = false
             
-            latitude = coordinate.latitude
-            longitude = coordinate.longitude
-
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                guard let coordinate: CLLocationCoordinate2D = self.locationManager.location?.coordinate else { return }
+                self.locationManager.stopUpdatingLocation()
+                self.latitude = coordinate.latitude
+                self.longitude = coordinate.longitude
+                
                 self.showMapView()
             }
-
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
                 self.isLocation = true
             }
@@ -181,19 +191,3 @@ extension GoogleMapsVC: GMSMapViewDelegate {
     
 }
 
-// MARK: Constants
-
-extension GoogleMapsVC {
-    
-    struct DefaultLocation {
-        private init(){}
-        
-        struct Arkhangelsk {
-            private init(){}
-            
-            static let latitude = 64.542227
-            static let longitude = 40.563143
-        }
-    }
-    
-}
