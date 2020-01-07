@@ -14,10 +14,8 @@ class ConfirmationVC: BaseVC {
 
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var enterButton: UIButton!
-
     @IBOutlet weak var imageViewCheckTermsOfService: UIImageView!
     @IBOutlet weak var imageViewCheckPrivacyPolicy: UIImageView!
-    
     @IBOutlet weak var viewCheckTermsOfService: UIView!
     @IBOutlet weak var viewCheckPrivacyPolicy: UIView!
     
@@ -32,7 +30,6 @@ class ConfirmationVC: BaseVC {
         
         configure()
         notSelectedPostReportButton(enterButton)
-
     }
     
     override func viewWillAppear(_ animated: Bool) {

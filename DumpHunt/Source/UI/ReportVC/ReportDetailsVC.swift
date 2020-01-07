@@ -46,6 +46,13 @@ final class ReportDetailsVC: BaseVC {
         showGoogleMapsVC()
     }
     
+    @IBAction func menuAction(_ sender: UIButton) {
+        
+        Utill.showReportActionSheet(vc: self, success: {
+            Utill.printInTOConsole(">>>showReportActionSheet")
+        })
+    }
+    
     // Mark: Methods
 
     private func setReport() {

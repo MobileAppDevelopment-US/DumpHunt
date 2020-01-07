@@ -32,4 +32,20 @@ final class Utill: NSObject {
         return dateFormatter.string(from: date)
     }
     
+    class func showReportActionSheet(vc: UIViewController,
+                                     success: VoidCompletion?) {
+        
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Пожаловаться на отчёт", style: .destructive) { action in
+            success?()
+        })
+        
+        alert.addAction(UIAlertAction(title: "Отменить", style: .cancel, handler: nil))
+        
+        DispatchQueue.main.async(execute: {
+            vc.present(alert, animated: true)
+        })
+    }
+    
 }

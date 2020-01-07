@@ -44,14 +44,23 @@ final class NetworkClient: NSObject {
                 failure?("Отсутствуют координаты")
                 return
         }
+        var fio = ""
+        var phone = ""
+        var comment = ""
 
-        let fio = reportVM?.fio ?? ""
-        let phone = reportVM?.phone ?? ""
-        let comment = reportVM?.comment ?? ""
+        if let tempFio = reportVM?.fio {
+            fio = "ФИО - \(tempFio);"
+        }
+        if let tempPhone = reportVM?.phone {
+            phone = "Номер телефона - \(tempPhone);"
+        }
+        if let tempComment = reportVM?.comment {
+            comment = "Комментарий - \(tempComment)"
+        }
 
         let parameters: [String : Any] = ["lat": latitude,
                                           "long": longitude,
-                                          "feedback_info": "ФИО - \(fio);  Номер телефона - \(phone);  Комментарий - \(comment)"]
+                                          "feedback_info": "\(fio) \(phone) \(comment)"]
 
         var imageData: Data!
         if let image = reportVM?.photo {

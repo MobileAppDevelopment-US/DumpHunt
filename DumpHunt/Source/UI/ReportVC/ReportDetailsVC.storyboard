@@ -111,8 +111,19 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zEC-XI-bH3"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Детали отчёта" id="bSz-Jc-fzO"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
+                    <navigationItem key="navigationItem" title="Детали отчёта" id="RJe-qY-YkZ">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="69E-u9-736">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Gmb-um-341">
+                                <rect key="frame" x="346" y="0.0" width="48" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="menu"/>
+                                <connections>
+                                    <action selector="menuAction:" destination="IX9-mv-aMl" eventType="touchUpInside" id="agr-0c-PBE"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="dateLabel" destination="wGV-Tr-q3b" id="bDS-bM-9AB"/>
                         <outlet property="dumpImageView" destination="wbt-rO-lIX" id="7kh-HN-hJo"/>
@@ -126,6 +137,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="menu" width="24" height="24"/>
         <image name="placeholder" width="300" height="200"/>
     </resources>
 </document>
