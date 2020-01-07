@@ -30,7 +30,7 @@ final class CreateReportVC: BaseVC {
         
         configure()
         createTapGestureRecognizer()
-        notSelectedPostReportButton()
+        notSelectedPostReportButton(postReportButton)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,31 +89,17 @@ final class CreateReportVC: BaseVC {
         view.layer.borderColor = Design.lightGray.cgColor
     }
     
-    private func notSelectedPostReportButton() {
-        
-        postReportButton.backgroundColor = Design.gray
-        postReportButton.tintColor = Design.grayText
-        postReportButton.isEnabled = false
-    }
-    
     private func createTapGestureRecognizer() {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(showSelectPhotoAlert))
         dumpImageView.isUserInteractionEnabled = true
         dumpImageView.addGestureRecognizer(tapGestureRecognizer)
     }
-    
-    private func selectedPostReportButton() {
-        
-        postReportButton.backgroundColor = Design.orange
-        postReportButton.tintColor = Design.white
-        postReportButton.isEnabled = true
-    }
-    
+
     private func isEnabledPostReportButton() {
         if reportVM.photo != nil && reportVM.latitude != nil && reportVM.longitude != nil {
-            selectedPostReportButton()
+            selectedPostReportButton(postReportButton)
         } else {
-            notSelectedPostReportButton()
+            notSelectedPostReportButton(postReportButton)
         }
     }
 
@@ -165,7 +151,7 @@ extension CreateReportVC {
                                       style: .default,
                                       handler: { _ in
                                         self.dataCleaning()
-                                        self.notSelectedPostReportButton()
+                                        self.notSelectedPostReportButton(self.postReportButton)
         }))
         self.present(alert, animated: true)
     }

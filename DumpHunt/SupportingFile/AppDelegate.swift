@@ -11,6 +11,7 @@ import IQKeyboardManagerSwift
 import GoogleMaps
 
 @UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
@@ -28,9 +29,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func openFirstScreen() {
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        let storyboard = UIStoryboard(name: "TabBarVC", bundle: nil)
-        let tabBarVC = storyboard.instantiateViewController(withIdentifier: "TabBarVC") as? TabBarVC
-        window?.rootViewController = tabBarVC
+
+        let notFirstEnter = UserDefaults.standard.bool(forKey: Design.notFirstEnter)
+
+        if notFirstEnter {
+            
+         let storyboard = UIStoryboard(name: "TabBarVC", bundle: nil)
+            let tabBarVC = storyboard.instantiateViewController(withIdentifier: "TabBarVC") as? TabBarVC
+            window?.rootViewController = tabBarVC
+            window?.makeKeyAndVisible()
+        } else {
+            let storyboard = UIStoryboard(name: "ConfirmationVC", bundle: nil)
+            let loginVC = storyboard.instantiateViewController(withIdentifier: "ConfirmationVC") as! ConfirmationVC
+            let nc = UINavigationController(rootViewController: loginVC)
+            window?.rootViewController = nc
+        }
         window?.makeKeyAndVisible()
     }
     

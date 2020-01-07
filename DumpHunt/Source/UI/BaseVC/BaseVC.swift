@@ -57,6 +57,22 @@ class BaseVC: UIViewController {
 
     // MARK: - NavigationBar
 
+    func notSelectedPostReportButton(_ button: UIButton) {
+         
+         button.backgroundColor = Design.gray
+         button.tintColor = Design.grayText
+         button.isEnabled = false
+     }
+     
+    func selectedPostReportButton(_ button: UIButton) {
+         
+         button.backgroundColor = Design.orange
+         button.tintColor = Design.white
+         button.isEnabled = true
+     }
+    
+    // MARK: - NavigationBar
+
     func setNavigationBarHidden() {
         navigationController?.setNavigationBarHidden(true, animated: true)
     }

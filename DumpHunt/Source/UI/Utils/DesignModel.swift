@@ -16,6 +16,8 @@ open class DesignModel {
 
     static let ApiUrlPath = "http://teachyourself.pythonanywhere.com/api/v1"
     static let SitePath = "https://www.ecolog29.ru/"
+    static let TermsOfService = "https://teachyourself.pythonanywhere.com/api/v1/customer-agreement/"
+    static let PrivacyPolicy = "https://teachyourself.pythonanywhere.com/api/v1/privacy-policy/"
 
     // Key
 
@@ -23,7 +25,8 @@ open class DesignModel {
     static let keyLongitude: String = "keyLongitude"
     static let keyShowRequestLocation: String = "keyShowRequestLocation"
     static let keyProvideAPI: String = "AIzaSyCZeTgAhBUfnrL63b4KY2BSz1TLoZanlnU"
-    
+    static let notFirstEnter: String = "keyNotFirstEnter"
+
     // Fonts
     
     static let sourceSansProRegular: String = "SourceSansPro-Regular"

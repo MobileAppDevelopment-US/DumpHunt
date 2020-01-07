@@ -20,6 +20,8 @@
 		CE450AD023BA6B6E00B3A844 /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE450ACF23BA6B6D00B3A844 /* SourceSansPro-Regular.ttf */; };
 		CE5ED0BB239D26D5004D8897 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5ED0BA239D26D5004D8897 /* Report.swift */; };
 		CE5ED0BD239D28A9004D8897 /* Extensions+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5ED0BC239D28A9004D8897 /* Extensions+UIImage.swift */; };
+		CE65E87623C48ECF00FA79E6 /* ConfirmationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE65E87523C48ECF00FA79E6 /* ConfirmationVC.swift */; };
+		CE65E87823C48EE200FA79E6 /* ConfirmationVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE65E87723C48EE200FA79E6 /* ConfirmationVC.storyboard */; };
 		CE9B376123AFCB0600C26D20 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9B376023AFCB0600C26D20 /* NetworkClient.swift */; };
 		CE9B376323AFCB7A00C26D20 /* CommonTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9B376223AFCB7A00C26D20 /* CommonTypes.swift */; };
 		CEB1B07C238851B60028D02C /* Utill.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB1B07B238851B60028D02C /* Utill.swift */; };
@@ -56,6 +58,8 @@
 		CE450ACF23BA6B6D00B3A844 /* SourceSansPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.ttf"; sourceTree = "<group>"; };
 		CE5ED0BA239D26D5004D8897 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		CE5ED0BC239D28A9004D8897 /* Extensions+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UIImage.swift"; sourceTree = "<group>"; };
+		CE65E87523C48ECF00FA79E6 /* ConfirmationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationVC.swift; sourceTree = "<group>"; };
+		CE65E87723C48EE200FA79E6 /* ConfirmationVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConfirmationVC.storyboard; sourceTree = "<group>"; };
 		CE9B376023AFCB0600C26D20 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		CE9B376223AFCB7A00C26D20 /* CommonTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTypes.swift; sourceTree = "<group>"; };
 		CEB1B07B238851B60028D02C /* Utill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utill.swift; sourceTree = "<group>"; };
@@ -153,6 +157,7 @@
 		CE31D92B2387CFF200E6FF2D /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				CE65E87423C48EA400FA79E6 /* ConfirmationVC */,
 				CEBC26172387DBC600738CB7 /* BaseVC */,
 				CE31D92C2387D00200E6FF2D /* TabBarVC */,
 				CEBC26122387D2DF00738CB7 /* CreateReportVC */,
@@ -220,6 +225,15 @@
 				CE450ACD23BA582F00B3A844 /* ReportVM.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		CE65E87423C48EA400FA79E6 /* ConfirmationVC */ = {
+			isa = PBXGroup;
+			children = (
+				CE65E87523C48ECF00FA79E6 /* ConfirmationVC.swift */,
+				CE65E87723C48EE200FA79E6 /* ConfirmationVC.storyboard */,
+			);
+			path = ConfirmationVC;
 			sourceTree = "<group>";
 		};
 		CE9B375F23AFCAE600C26D20 /* Managers */ = {
@@ -344,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE31D9212387CEC300E6FF2D /* LaunchScreen.storyboard in Resources */,
+				CE65E87823C48EE200FA79E6 /* ConfirmationVC.storyboard in Resources */,
 				CEBC261E2387E3B100738CB7 /* ReportListCell.xib in Resources */,
 				CEB1B0802388552A0028D02C /* GoogleMapsVC.storyboard in Resources */,
 				CEBC26162387D30500738CB7 /* CreateReportVC.storyboard in Resources */,
@@ -431,6 +446,7 @@
 				CE450ACE23BA582F00B3A844 /* ReportVM.swift in Sources */,
 				CEB1B07E238855150028D02C /* GoogleMapsVC.swift in Sources */,
 				CE9B376123AFCB0600C26D20 /* NetworkClient.swift in Sources */,
+				CE65E87623C48ECF00FA79E6 /* ConfirmationVC.swift in Sources */,
 				CE31D9152387CEC200E6FF2D /* AppDelegate.swift in Sources */,
 				CEB1B07C238851B60028D02C /* Utill.swift in Sources */,
 				CEBC26212387E6AE00738CB7 /* ReportDetailsVC.swift in Sources */,
