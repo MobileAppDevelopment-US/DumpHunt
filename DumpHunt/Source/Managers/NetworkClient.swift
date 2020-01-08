@@ -31,7 +31,7 @@ final class NetworkClient: NSObject {
     // MARK: - API
     
     private let PostReport = "\(Design.ApiUrlPath)/reports/"
-    private let GetReports = "\(Design.ApiUrlPath)/reports/"
+    private let GetReports = "\(Design.ApiUrlPath)/reports/?all=true/"
 
     // MARK: - Methods
     
@@ -60,7 +60,8 @@ final class NetworkClient: NSObject {
 
         let parameters: [String : Any] = ["lat": latitude,
                                           "long": longitude,
-                                          "feedback_info": "\(fio) \(phone) \(comment)"]
+                                          "comment": "\(comment)",
+                                          "feedback_info": "\(fio) \(phone)"]
 
         var imageData: Data!
         if let image = reportVM?.photo {

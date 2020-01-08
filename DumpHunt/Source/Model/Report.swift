@@ -18,24 +18,28 @@ class ReportsData: Decodable {
 }
 
 class Report: Codable {
+    var id: String?
     var photoURL: String?
     var latitude: Double?
     var longitude: Double?
     var date: String?
 
     enum CodingKeys: String, CodingKey {
+        case id
         case photoURL = "photo"
         case latitude = "lat"
         case longitude = "long"
         case date = "datetime_received"
     }
     
-    init(photoURL: String?,
+    init(id: String?,
+         photoURL: String?,
          phone: String?,
          latitude: Double?,
          longitude: Double?,
          date: String?)
     {
+        self.id = id
         self.photoURL = photoURL
         self.latitude = latitude
         self.longitude = longitude
@@ -46,6 +50,7 @@ class Report: Codable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
 
         self.photoURL = try? values.decode(String.self, forKey: .photoURL)
+        self.id = try? values.decode(String.self, forKey: .id)
         self.latitude = try? values.decode(Double.self, forKey: .latitude)
         self.longitude = try? values.decode(Double.self, forKey: .longitude)
         self.date = try? values.decode(String.self, forKey: .date)
@@ -54,6 +59,7 @@ class Report: Codable {
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         
+        try container .encode(id, forKey: .id)
         try container .encode(photoURL, forKey: .photoURL)
         try container .encode(latitude, forKey: .latitude)
         try container .encode(longitude, forKey: .longitude)
