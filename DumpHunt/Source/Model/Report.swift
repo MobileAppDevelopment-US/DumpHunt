@@ -18,7 +18,7 @@ class ReportsData: Decodable {
 }
 
 class Report: Codable {
-    var id: String?
+    var id: Int?
     var photoURL: String?
     var latitude: Double?
     var longitude: Double?
@@ -32,7 +32,7 @@ class Report: Codable {
         case date = "datetime_received"
     }
     
-    init(id: String?,
+    init(id: Int?,
          photoURL: String?,
          phone: String?,
          latitude: Double?,
@@ -49,8 +49,8 @@ class Report: Codable {
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
 
+        self.id = try? values.decode(Int.self, forKey: .id)
         self.photoURL = try? values.decode(String.self, forKey: .photoURL)
-        self.id = try? values.decode(String.self, forKey: .id)
         self.latitude = try? values.decode(Double.self, forKey: .latitude)
         self.longitude = try? values.decode(Double.self, forKey: .longitude)
         self.date = try? values.decode(String.self, forKey: .date)

@@ -25,6 +25,7 @@ final class ReportDetailsVC: BaseVC {
 
     var report: Report?
     weak var delegate: ReportListVCDelegate?
+    weak var submitAction : UIAlertAction?
 
     // MARK: - Lifecycle
 
@@ -48,8 +49,10 @@ final class ReportDetailsVC: BaseVC {
     
     @IBAction func menuAction(_ sender: UIButton) {
         
-        Utill.showReportActionSheet(vc: self, success: {
-            Utill.printInTOConsole(">>>showReportActionSheet")
+        Utill.showReportActionSheet(vc: self,
+                                    success: { [weak self] () in
+                                        guard let self = self else { return }
+                                        self.reportContent()
         })
     }
     
@@ -57,11 +60,12 @@ final class ReportDetailsVC: BaseVC {
 
     private func setReport() {
         
-        if let textUrl = report?.photoURL, let url = URL(string: textUrl) {
+        if let textUrl = report?.photoURL,
+            let url = URL(string: textUrl) {
             dumpImageView.kf.setImage(with: url,
-                                        placeholder: Utill.getPlaceholder(),
-                                        options: [.transition(.fade(1)),
-                                                  .cacheOriginalImage])
+                                      placeholder: Utill.getPlaceholder(),
+                                      options: [.transition(.fade(1)),
+                                                .cacheOriginalImage])
         } else {
             dumpImageView.image = Utill.getPlaceholder()
         }
@@ -79,7 +83,81 @@ final class ReportDetailsVC: BaseVC {
         }
 
     }
+    
+    private func reportContent() {
 
+        let alert = UIAlertController(title: nil,
+                                      message: "Пожалуйста, укажите причину жалобы",
+                                      preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.addTarget(self,
+                                action: #selector(self.reportReasonChanged(sender:)),
+                                for: .editingChanged)
+        }
+        
+        let action = UIAlertAction(title: "Отправить",
+                                   style: .default,
+                                   handler: { [weak alert] (_) in
+                                    guard let textField = alert?.textFields![0],
+                                        let complain = textField.text,
+                                        !complain.isEmpty else { return }
+                                    
+                                    self.showSpinner()
+                                    
+                                    self.networkClient.postComplainReport(reportID: self.report?.id,
+                                                                          complain: complain,
+                                                                          success: { [weak self] () in
+                                                                            guard let self = self else { return }
+                                                                            DispatchQueue.main.async {
+                                                                                self.hideSpinner()
+                                                                            }
+                                        },
+                                                                          failure:
+                                        { [weak self] (message) in
+                                            guard let self = self else { return }
+                                            self.hideSpinner()
+                                            self.showErrorAlert(message)
+                                    })
+        })
+        
+        alert.addAction(action)
+        alert.addAction(UIAlertAction(title: "Отменить", style: .cancel))
+        
+        self.submitAction = action
+        action.isEnabled = false
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    @objc func reportReasonChanged(sender:UITextField){
+        self.submitAction?.isEnabled = sender.text?.isEmpty == false
+    }
+
+}
+
+// MARK: - NetworkClient
+
+extension ReportDetailsVC {
+    
+    private func postComplainReport() {
+        
+        showSpinner()
+        let complain = "жалоба"
+        
+        networkClient.postComplainReport(reportID: report?.id,
+                                         complain: complain,
+                                         success: { [weak self] () in
+                                            guard let self = self else { return }
+                                            DispatchQueue.main.async {
+                                                self.hideSpinner()
+                                            }
+            },
+                                         failure:
+            { [weak self] (message) in
+                guard let self = self else { return }
+                self.hideSpinner()
+                self.showErrorAlert(message)
+        })
+    }
 }
 
 // MARK: - Transition

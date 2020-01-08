@@ -30,11 +30,48 @@ final class NetworkClient: NSObject {
     
     // MARK: - API
     
-    private let PostReport = "\(Design.ApiUrlPath)/reports/"
-    private let GetReports = "\(Design.ApiUrlPath)/reports/?all=true/"
+    private let GetReports         = "\(Design.ApiUrlPath)/reports/?all=true/"
+    private let PostReport         = "\(Design.ApiUrlPath)/reports/"
+    private let PostComplainReport = "\(Design.ApiUrlPath)/reports/"
 
     // MARK: - Methods
     
+    func getReports(success: ReportsCompletion?,
+                    failure: ErrorCompletion?) {
+        
+        //let parameters : Parameters =  ["all" : "true"]
+
+        AF.request(GetReports,
+                   method: .get,
+                   parameters: nil,
+                   encoding: JSONEncoding.default,
+                   headers: headers).validate(statusCode: 200..<300).response { response in
+                    
+                    guard let data = response.data,
+                        let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String : Any] else {
+                            failure?("Ошибка сервера")
+                            return
+                    }
+                    Utill.printInTOConsole("GetReports = \(String(data: data, encoding: .utf8) ?? "")")
+
+                    switch response.result {
+                    case .success:
+                        if let reportsData = self.reportsDataMap(data: data) {
+                            success?(reportsData)
+                        }
+                        break
+                        
+                    case .failure:
+                        self.errorHandler(json: json,
+                                          response: response,
+                                          success:
+                            { (message) in
+                                failure?(message)
+                        })
+                    }
+        }
+    }
+
     func postSaveReport(reportVM: ReportVM?,
                         success: VoidCompletion?,
                         failure: ErrorCompletion?) {
@@ -57,11 +94,11 @@ final class NetworkClient: NSObject {
         if let tempComment = reportVM?.comment {
             comment = "Комментарий - \(tempComment)"
         }
-
-        let parameters: [String : Any] = ["lat": latitude,
-                                          "long": longitude,
-                                          "comment": "\(comment)",
-                                          "feedback_info": "\(fio) \(phone)"]
+        
+        let parameters: Parameters = ["lat": latitude,
+                                      "long": longitude,
+                                      "comment": "\(comment)",
+                                      "feedback_info": "\(fio) \(phone)"]
 
         var imageData: Data!
         if let image = reportVM?.photo {
@@ -106,37 +143,47 @@ final class NetworkClient: NSObject {
         }
     }
     
-    func getReports(success: ReportsCompletion?,
-                    failure: ErrorCompletion?) {
+    func postComplainReport(reportID: Int?,
+                            complain: String?,
+                            success: VoidCompletion?,
+                            failure: ErrorCompletion?) {
         
-        AF.request(GetReports,
-                   method: .get,
-                   parameters: nil,
-                   encoding: JSONEncoding.default,
+        guard let reportID = reportID,
+            let complain = complain else {
+                failure?("Ошибка сервера")
+                return
+        }
+        
+        let parameters : Parameters =  ["body": complain]
+        let urlPath = "\(PostComplainReport)\(reportID)/content-complain/"
+        
+        AF.request(urlPath,
+                   method: .post,
+                   parameters: parameters,
+                   encoding: URLEncoding.default,
                    headers: headers).validate(statusCode: 200..<300).response { response in
                     
-                    guard let data = response.data,
-                        let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String : Any] else {
-                            failure?("Ошибка сервера")
-                            return
-                    }
-                    Utill.printInTOConsole("GetReports = \(String(data: data, encoding: .utf8) ?? "")")
+            guard let data = response.data,
+                let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String : Any] else {
+                    failure?("Ошибка сервера")
+                    return
+            }
 
-                    switch response.result {
-                    case .success:
-                        if let reportsData = self.reportsDataMap(data: data) {
-                            success?(reportsData)
-                        }
-                        break
-                        
-                    case .failure:
-                        self.errorHandler(json: json,
-                                          response: response,
-                                          success:
-                            { (message) in
-                                failure?(message)
-                        })
-                    }
+            Utill.printInTOConsole("PostReport = \(String(data: data, encoding: .utf8) ?? "")")
+            
+            switch response.result {
+            case .success:
+                success?()
+                break
+                
+            case .failure:
+                self.errorHandler(json: json,
+                                  response: response,
+                                  success:
+                    { (message) in
+                        failure?(message)
+                })
+            }
         }
     }
     
