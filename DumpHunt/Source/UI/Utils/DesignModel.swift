@@ -14,7 +14,7 @@ open class DesignModel {
     
     // URL
 
-    static let ApiUrlPath = "http://teachyourself.pythonanywhere.com/api/v1"
+    static let ApiUrlPath = "http://teachyourself.pythonanywhere.com/api/v1/reports/"
     static let SitePath = "https://www.ecolog29.ru/"
     static let TermsOfService = "https://teachyourself.pythonanywhere.com/api/v1/customer-agreement/"
     static let PrivacyPolicy = "https://teachyourself.pythonanywhere.com/api/v1/privacy-policy/"

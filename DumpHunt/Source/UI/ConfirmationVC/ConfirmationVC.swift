@@ -79,6 +79,7 @@ class ConfirmationVC: BaseVC {
     }
     
     private func createTapGestureRecognizers() {
+        
         let termsOfServiceTapGesture = UITapGestureRecognizer(target: self, action: #selector(checkTermsOfService))
         viewCheckTermsOfService.isUserInteractionEnabled = true
         viewCheckTermsOfService.addGestureRecognizer(termsOfServiceTapGesture)

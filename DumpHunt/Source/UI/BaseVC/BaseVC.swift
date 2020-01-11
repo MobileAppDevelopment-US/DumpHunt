@@ -135,6 +135,12 @@ extension BaseVC {
         
         present(controller, animated: true, completion: nil)
     }
+   
+}
+
+// MARK: - ErrorAlert
+
+extension BaseVC {
     
     func showErrorAlert(_ message: String?) {
         let alert = UIAlertController(title: nil,

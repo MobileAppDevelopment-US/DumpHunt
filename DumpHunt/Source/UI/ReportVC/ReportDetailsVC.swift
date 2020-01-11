@@ -101,23 +101,8 @@ final class ReportDetailsVC: BaseVC {
                                     guard let textField = alert?.textFields![0],
                                         let complain = textField.text,
                                         !complain.isEmpty else { return }
-                                    
                                     self.showSpinner()
-                                    
-                                    self.networkClient.postComplainReport(reportID: self.report?.id,
-                                                                          complain: complain,
-                                                                          success: { [weak self] () in
-                                                                            guard let self = self else { return }
-                                                                            DispatchQueue.main.async {
-                                                                                self.hideSpinner()
-                                                                            }
-                                        },
-                                                                          failure:
-                                        { [weak self] (message) in
-                                            guard let self = self else { return }
-                                            self.hideSpinner()
-                                            self.showErrorAlert(message)
-                                    })
+                                    self.postComplainReport(complain)
         })
         
         alert.addAction(action)
@@ -138,26 +123,36 @@ final class ReportDetailsVC: BaseVC {
 
 extension ReportDetailsVC {
     
-    private func postComplainReport() {
+    private func postComplainReport(_ complain: String) {
         
-        showSpinner()
-        let complain = "жалоба"
-        
-        networkClient.postComplainReport(reportID: report?.id,
-                                         complain: complain,
-                                         success: { [weak self] () in
-                                            guard let self = self else { return }
-                                            DispatchQueue.main.async {
-                                                self.hideSpinner()
-                                            }
+        self.networkClient.postComplainReport(reportID: self.report?.id,
+                                              complain: complain,
+                                              success: { [weak self] () in
+                                                guard let self = self else { return }
+                                                DispatchQueue.main.async {
+                                                    self.hideSpinner()
+                                                    self.showSuccessAlert("Жалоба отправлена")
+                                                }
             },
-                                         failure:
+                                              failure:
             { [weak self] (message) in
                 guard let self = self else { return }
                 self.hideSpinner()
                 self.showErrorAlert(message)
         })
     }
+    
+    private func showSuccessAlert(_ message: String?) {
+        
+        let alert = UIAlertController(title: nil,
+                                      message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok",
+                                      style: .default,
+                                      handler: nil))
+        self.present(alert, animated: true)
+    }
+    
 }
 
 // MARK: - Transition

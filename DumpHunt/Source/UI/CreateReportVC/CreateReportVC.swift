@@ -43,6 +43,7 @@ final class CreateReportVC: BaseVC {
     // Mark: Actions
     
     @IBAction func mapActionButton(_ sender: UIButton) {
+        
         reportVM.latitude = nil
         reportVM.longitude = nil
         gpsLabel.text = ""
@@ -90,12 +91,14 @@ final class CreateReportVC: BaseVC {
     }
     
     private func createTapGestureRecognizer() {
+        
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(showSelectPhotoAlert))
         dumpImageView.isUserInteractionEnabled = true
         dumpImageView.addGestureRecognizer(tapGestureRecognizer)
     }
 
     private func isEnabledPostReportButton() {
+        
         if reportVM.photo != nil && reportVM.latitude != nil && reportVM.longitude != nil {
             selectedPostReportButton(postReportButton)
         } else {
@@ -134,6 +137,7 @@ extension CreateReportVC {
     }
     
     private func dataCleaning() {
+        
         reportVM = ReportVM()
         dumpImageView.image = UIImage(named: "addPhotoPlaceholder.jpg")
         gpsLabel.text = ""
@@ -144,6 +148,7 @@ extension CreateReportVC {
     }
     
     private func showSuccessAlert(_ message: String?) {
+        
         let alert = UIAlertController(title: nil,
                                       message: message,
                                       preferredStyle: .alert)

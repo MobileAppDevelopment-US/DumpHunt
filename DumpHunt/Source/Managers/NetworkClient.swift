@@ -30,24 +30,26 @@ final class NetworkClient: NSObject {
     
     // MARK: - API
     
-    private let GetReports         = "\(Design.ApiUrlPath)/reports/?all=true/"
-    private let PostReport         = "\(Design.ApiUrlPath)/reports/"
-    private let PostComplainReport = "\(Design.ApiUrlPath)/reports/"
+    private let ApiUrlPath = DesignModel.ApiUrlPath
 
-    // MARK: - Methods
+    // MARK: - GET
     
     func getReports(success: ReportsCompletion?,
                     failure: ErrorCompletion?) {
         
-        //let parameters : Parameters =  ["all" : "true"]
+        let urlPath = "\(ApiUrlPath)?all=true"
 
-        AF.request(GetReports,
+        AF.request(urlPath,
                    method: .get,
                    parameters: nil,
                    encoding: JSONEncoding.default,
                    headers: headers).validate(statusCode: 200..<300).response { response in
                     
+                    if let data = response.data {
+                        Utill.printInTOConsole("GetReports = \(String(data: data, encoding: .utf8) ?? "")")
+                    }
                     guard let data = response.data,
+
                         let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String : Any] else {
                             failure?("Ошибка сервера")
                             return
@@ -72,6 +74,8 @@ final class NetworkClient: NSObject {
         }
     }
 
+    // MARK: - POST
+
     func postSaveReport(reportVM: ReportVM?,
                         success: VoidCompletion?,
                         failure: ErrorCompletion?) {
@@ -81,19 +85,10 @@ final class NetworkClient: NSObject {
                 failure?("Отсутствуют координаты")
                 return
         }
-        var fio = ""
-        var phone = ""
-        var comment = ""
 
-        if let tempFio = reportVM?.fio {
-            fio = "ФИО - \(tempFio);"
-        }
-        if let tempPhone = reportVM?.phone {
-            phone = "Номер телефона - \(tempPhone);"
-        }
-        if let tempComment = reportVM?.comment {
-            comment = "Комментарий - \(tempComment)"
-        }
+        let fio = reportVM?.fio ?? ""
+        let phone = reportVM?.phone ?? ""
+        let comment = reportVM?.comment ?? ""
         
         let parameters: Parameters = ["lat": latitude,
                                       "long": longitude,
@@ -114,7 +109,7 @@ final class NetworkClient: NSObject {
             multipartFormData.append(imageData, withName: "photo",
                                      fileName: "swift_file.png",
                                      mimeType: "image/png")
-        }, to: PostReport,
+        }, to: ApiUrlPath,
            usingThreshold: UInt64.init(),
            method: .post,
            headers: headers).validate(statusCode: 200..<300).response { response in
@@ -155,7 +150,7 @@ final class NetworkClient: NSObject {
         }
         
         let parameters : Parameters =  ["body": complain]
-        let urlPath = "\(PostComplainReport)\(reportID)/content-complain/"
+        let urlPath = "\(ApiUrlPath)\(reportID)/content-complain/"
         
         AF.request(urlPath,
                    method: .post,

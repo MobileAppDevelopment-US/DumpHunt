@@ -146,6 +146,7 @@ extension ReportListVC {
     }
     
     func showError(_ message: String?) {
+        
         let alert = UIAlertController(title: nil,
                                       message: message,
                                       preferredStyle: .alert)

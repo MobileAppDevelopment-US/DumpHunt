@@ -184,6 +184,7 @@ extension GoogleMapsVC: GMSMapViewDelegate {
     }
     
     func mapView(_ mapView: GMSMapView, didLongPressAt coordinate: CLLocationCoordinate2D) {
+        
         currentMarker.position = coordinate
         latitude = coordinate.latitude
         longitude = coordinate.longitude
