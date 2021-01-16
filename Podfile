@@ -12,5 +12,6 @@ target 'DumpHunt' do
   pod 'Alamofire', '~> 5.0.0-rc.3'
   pod 'JGProgressHUD'
   pod 'Kingfisher', '~> 5.0'
+  pod 'AppsFlyerFramework'
 
 end

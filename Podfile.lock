@@ -1,5 +1,8 @@
 PODS:
   - Alamofire (5.0.0-rc.3)
+  - AppsFlyerFramework (6.1.4):
+    - AppsFlyerFramework/Main (= 6.1.4)
+  - AppsFlyerFramework/Main (6.1.4)
   - GoogleMaps (3.6.0):
     - GoogleMaps/Maps (= 3.6.0)
   - GoogleMaps/Base (3.6.0)
@@ -14,6 +17,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0-rc.3)
+  - AppsFlyerFramework
   - GoogleMaps
   - IQKeyboardManagerSwift
   - JGProgressHUD
@@ -23,6 +27,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - AppsFlyerFramework
     - GoogleMaps
     - IQKeyboardManagerSwift
     - JGProgressHUD
@@ -31,12 +36,13 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: ca8c0de6906873be89d6deec5c8de279e00bf872
+  AppsFlyerFramework: ed1a754b74739bafbcb0d8235d6bc4f0ffe2e0ec
   GoogleMaps: 82f8fe307193bb4de6ef6bf9e88f1d624b718f9d
   IQKeyboardManagerSwift: 2dde0fc70110e8eac7ccce2a46fdbec6a850b414
   JGProgressHUD: aa403e9a5b45cae98903c4600cccdd98c0c3ec90
   Kingfisher: dc6e0f53bb5b12c3e75bedb0e01bbd7a640eea69
   KMPlaceholderTextView: 2206c3df39979e9396e2d96fa9f427a8951121b0
 
-PODFILE CHECKSUM: 4d2b3912cff12cd20ab18a2a802a589271900c33
+PODFILE CHECKSUM: bced5e0750ebb3013eb4ae9624618692f9267a3f
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.0

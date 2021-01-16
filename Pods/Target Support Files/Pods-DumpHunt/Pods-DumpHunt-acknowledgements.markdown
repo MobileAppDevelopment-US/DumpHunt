@@ -24,6 +24,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
+## AppsFlyerFramework
+
+Copyright 2018 AppsFlyer Ltd. All rights reserved.
+
 ## GoogleMaps
 
 Copyright 2019 Google
