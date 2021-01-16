@@ -26,9 +26,9 @@ class TabBarVC: UITabBarController {
         let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12.0)]
         appearance.setTitleTextAttributes(attributes as [NSAttributedString.Key : Any], for: .normal)
         
-        tabBar.items?[0].title = "Создать"
-        tabBar.items?[1].title = "Список"
-        tabBar.items?[2].title = "О проекте"
+        tabBar.items?[0].title = Constants.createReport
+        tabBar.items?[1].title = Constants.list
+        tabBar.items?[2].title = Constants.aboutProject
 
         tabBar.tintColor = Design.green
         tabBar.isTranslucent = false

@@ -41,7 +41,7 @@ final class Utill: NSObject {
             success?()
         })
         
-        alert.addAction(UIAlertAction(title: "Отменить", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: Constants.cancel, style: .cancel, handler: nil))
         
         DispatchQueue.main.async(execute: {
             vc.present(alert, animated: true)

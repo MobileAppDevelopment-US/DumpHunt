@@ -20,7 +20,6 @@ class BaseVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setBackArrowButton()
     }
     
@@ -46,7 +45,7 @@ class BaseVC: UIViewController {
     }
     
     @objc func leftButtonAction(_ button: UIBarButtonItem) {
-         self.navigationController?.popViewController(animated: true)
+        popViewController()
      }
     
     func setHiddenBlackArrowButton() {
@@ -71,22 +70,10 @@ class BaseVC: UIViewController {
          button.isEnabled = true
      }
     
-    // MARK: - NavigationBar
-
-    func setNavigationBarHidden() {
-        navigationController?.setNavigationBarHidden(true, animated: true)
+    func hideNavigationBar(_ isHidden: Bool) {
+        navigationController?.setNavigationBarHidden(isHidden, animated: true)
     }
     
-    func showNavigationBar() {
-        navigationController?.setNavigationBarHidden(false, animated: true)
-    }
-    
-    // MARK: - Transition VC
-
-    func pushViewController(_ vc: UIViewController) {
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-   
 }
 
 // MARK: - Spinner
@@ -119,14 +106,14 @@ extension BaseVC {
     
     func showConnectedToInternetAlert() {
         
-        let controller = UIAlertController(title: "Отсутсвует интернет",
-                                           message: "Для получения или отправки данных подключитесь к Интернету",
+        let controller = UIAlertController(title: Constants.noInternet,
+                                           message: Constants.connectToInternet,
                                            preferredStyle: .alert)
         
-        let ok = UIAlertAction(title: "OK",
+        let ok = UIAlertAction(title: Constants.ok,
                                style: .default,
                                handler: nil)
-        let cancel = UIAlertAction(title: "Отменить",
+        let cancel = UIAlertAction(title: Constants.cancel,
                                    style: .cancel,
                                    handler: nil)
         
@@ -146,7 +133,7 @@ extension BaseVC {
         let alert = UIAlertController(title: nil,
                                       message: message,
                                       preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok",
+        alert.addAction(UIAlertAction(title: Constants.ok,
                                       style: .default,
                                       handler: nil))
         self.present(alert, animated: true)

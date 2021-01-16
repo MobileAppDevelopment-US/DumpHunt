@@ -123,15 +123,15 @@ final class GoogleMapsVC: BaseVC {
     
     private func showDisabledLocationAlert() {
         
-        let accessAlert = UIAlertController(title: "Определение местоположения отключено",
-                                            message: "Вам необходимо включить определение местоположения: Настройки -> Конфиденциальность -> Служба определения местоположения -> Охота на свалку",
+        let accessAlert = UIAlertController(title: Constants.positioningDisabled,
+                                            message: Constants.enableSettings,
                                             preferredStyle: .alert)
         
-        accessAlert.addAction(UIAlertAction(title: "OK",
+        accessAlert.addAction(UIAlertAction(title: Constants.ok,
                                             style: .default,
                                             handler: nil))
         
-        accessAlert.addAction(UIAlertAction(title: "Отмена",
+        accessAlert.addAction(UIAlertAction(title: Constants.cancel,
                                             style: .cancel,
                                             handler: nil))
         

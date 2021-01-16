@@ -30,7 +30,7 @@ final class NetworkClient: NSObject {
     
     // MARK: - API
     
-    private let ApiUrlPath = DesignModel.ApiUrlPath
+    private let ApiUrlPath = Constants.ApiUrlPath
 
     // MARK: - GET
     

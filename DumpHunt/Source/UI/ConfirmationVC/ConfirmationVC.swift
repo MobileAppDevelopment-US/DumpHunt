@@ -66,16 +66,16 @@ class ConfirmationVC: BaseVC {
     
     @IBAction func enterActionButton(_ sender: UIButton) {
    
-        UserDefaults.standard.set(true, forKey: Design.notFirstEnter)
+        UserDefaults.standard.set(true, forKey: Constants.notFirstEnter)
         showCreateReportVC()
     }
     
     @IBAction func privacyPolicyActionButton(_ sender: UIButton) {
-        showPrivacyPolicyOrTermsOfService(DesignModel.PrivacyPolicy)
+        showPrivacyPolicyOrTermsOfService(Constants.PrivacyPolicy)
     }
     
     @IBAction func termsOfServiceButtonActionButton(_ sender: UIButton) {
-        showPrivacyPolicyOrTermsOfService(DesignModel.TermsOfService)
+        showPrivacyPolicyOrTermsOfService(Constants.TermsOfService)
     }
     
     private func createTapGestureRecognizers() {
@@ -138,8 +138,7 @@ extension ConfirmationVC {
     private func showCreateReportVC() {
         
         let appdelegate = UIApplication.shared.delegate as! AppDelegate
-        let storyboard: UIStoryboard = UIStoryboard(name: "TabBarVC", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "TabBarVC") as! TabBarVC
+        guard let vc = TabBarVC.instanceFromStoryboard(.tabBarVC) as? TabBarVC else { return }
         appdelegate.window!.rootViewController = vc
     }
     

@@ -44,7 +44,7 @@ final class AboutProjectVC: BaseVC {
     
     @objc func showSite() {
         
-        if let url = URL(string: Design.SitePath), UIApplication.shared.canOpenURL(url) {
+        if let url = URL(string: Constants.SitePath), UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url)
         }
     }

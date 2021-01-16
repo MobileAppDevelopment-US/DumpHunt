@@ -19,6 +19,8 @@ final class ReportListCell: UITableViewCell {
     @IBOutlet var longitudeLabel: UILabel!
     @IBOutlet var bottomView: UIView!
     
+    static let identifier = "ReportListCell"
+    
     // MARK: - Methods
     
     func setReport(_ report: Report?) {
@@ -40,11 +42,11 @@ final class ReportListCell: UITableViewCell {
         }
         
         if let latitude = report?.latitude {
-            latitudeLabel.text = "Долгота: \(latitude)"
+            latitudeLabel.text = "\(Constants.latitude)\(latitude)"
         }
         
         if let longitude = report?.longitude{
-            longitudeLabel.text = "Широта: \(longitude)"
+            longitudeLabel.text = "\(Constants.longitude)\(longitude)"
         }
         
         selectionStyle = .none

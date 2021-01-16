@@ -124,7 +124,7 @@ extension CreateReportVC {
                                         
                                         DispatchQueue.main.async {
                                             self.hideSpinner()
-                                            self.showSuccessAlert("Данные отправлены")
+                                            self.showSuccessAlert(Constants.dataSend)
                                         }
             },
                                      failure:
@@ -152,7 +152,7 @@ extension CreateReportVC {
         let alert = UIAlertController(title: nil,
                                       message: message,
                                       preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok",
+        alert.addAction(UIAlertAction(title: Constants.ok,
                                       style: .default,
                                       handler: { _ in
                                         self.dataCleaning()
@@ -169,23 +169,23 @@ extension CreateReportVC: UINavigationControllerDelegate, UIImagePickerControlle
     
     @objc func showSelectPhotoAlert() {
         
-        let alert = UIAlertController(title: "Выберите источник фото",
-                                      message: "",
+        let alert = UIAlertController(title: Constants.selectPhotoSource,
+                                      message: nil,
                                       preferredStyle: .actionSheet)
         
-        alert.addAction(UIAlertAction(title: "Камера",
+        alert.addAction(UIAlertAction(title: Constants.camera,
                                       style: .default,
                                       handler: {(action: UIAlertAction) in
                                         self.getImage(fromSourceType: .camera)
         }))
         
-        alert.addAction(UIAlertAction(title: "Альбом",
+        alert.addAction(UIAlertAction(title: Constants.album,
                                       style: .default,
                                       handler: {(action: UIAlertAction) in
                                         self.getImage(fromSourceType: .photoLibrary)
         }))
         
-        alert.addAction(UIAlertAction(title: "Отменить",
+        alert.addAction(UIAlertAction(title: Constants.cancel,
                                       style: .cancel,
                                       handler: nil))
         
@@ -203,7 +203,7 @@ extension CreateReportVC: UINavigationControllerDelegate, UIImagePickerControlle
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        self.dismiss(animated: true, completion: nil)
+        dismissVC()
     }
     
     func imagePickerController(_ picker: UIImagePickerController,
@@ -213,7 +213,7 @@ extension CreateReportVC: UINavigationControllerDelegate, UIImagePickerControlle
         reportVM.photo = orientationFixedImage
         dumpImageView.image = orientationFixedImage
         isEnabledPostReportButton()
-        dismiss(animated:true, completion: nil)
+        dismissVC()
     }
     
 }
@@ -224,10 +224,7 @@ extension CreateReportVC {
     
     private func showGoogleMapsVC() {
         
-        let storyboard = UIStoryboard(name: "GoogleMapsVC", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(withIdentifier: "GoogleMapsVC") as? GoogleMapsVC else {
-            return
-        }
+        guard let vc = GoogleMapsVC.instanceFromStoryboard(.googleMapsVC) as? GoogleMapsVC else { return }
         vc.delegate = self
         vc.typeVC = .show
         pushViewController(vc)

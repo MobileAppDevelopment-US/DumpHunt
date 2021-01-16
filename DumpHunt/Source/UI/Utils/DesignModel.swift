@@ -12,31 +12,13 @@ typealias Design = DesignModel
 
 open class DesignModel {
     
-    // URL
-
-    static let ApiUrlPath = "http://teachyourself.pythonanywhere.com/api/v1/reports/"
-    static let SitePath = "https://www.ecolog29.ru/"
-    static let TermsOfService = "https://teachyourself.pythonanywhere.com/api/v1/customer-agreement/"
-    static let PrivacyPolicy = "https://teachyourself.pythonanywhere.com/api/v1/privacy-policy/"
-
-    // Key
-
-    static let keyLatitude: String = "keyLatitude"
-    static let keyLongitude: String = "keyLongitude"
-    static let keyShowRequestLocation: String = "keyShowRequestLocation"
-    static let keyProvideAPI: String = "AIzaSyCZeTgAhBUfnrL63b4KY2BSz1TLoZanlnU"
-    static let notFirstEnter: String = "keyNotFirstEnter"
-
     // Fonts
-    
     static let sourceSansProRegular: String = "SourceSansPro-Regular"
     
     // Fonts Size
-
     static let medium: CGFloat = 14.0
     
     // Colors
-    
     public static var white: UIColor { return .white }
     public static var lightGray: UIColor { return .lightGray }
     

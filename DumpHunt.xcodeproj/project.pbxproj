@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE13EF0425B3730F00CA5E20 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE13EF0325B3730F00CA5E20 /* Constants.swift */; };
+		CE13EF0825B3754700CA5E20 /* UIStoryboard+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE13EF0725B3754700CA5E20 /* UIStoryboard+Ext.swift */; };
+		CE13EF0D25B376D700CA5E20 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE13EF0C25B376D700CA5E20 /* UIViewController+Ext.swift */; };
 		CE31D9152387CEC200E6FF2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE31D9142387CEC200E6FF2D /* AppDelegate.swift */; };
 		CE31D9172387CEC200E6FF2D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE31D9162387CEC200E6FF2D /* SceneDelegate.swift */; };
 		CE31D91E2387CEC300E6FF2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE31D91D2387CEC300E6FF2D /* Assets.xcassets */; };
@@ -19,7 +22,7 @@
 		CE450ACE23BA582F00B3A844 /* ReportVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE450ACD23BA582F00B3A844 /* ReportVM.swift */; };
 		CE450AD023BA6B6E00B3A844 /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE450ACF23BA6B6D00B3A844 /* SourceSansPro-Regular.ttf */; };
 		CE5ED0BB239D26D5004D8897 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5ED0BA239D26D5004D8897 /* Report.swift */; };
-		CE5ED0BD239D28A9004D8897 /* Extensions+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5ED0BC239D28A9004D8897 /* Extensions+UIImage.swift */; };
+		CE5ED0BD239D28A9004D8897 /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5ED0BC239D28A9004D8897 /* UIImage+Ext.swift */; };
 		CE65E87623C48ECF00FA79E6 /* ConfirmationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE65E87523C48ECF00FA79E6 /* ConfirmationVC.swift */; };
 		CE65E87823C48EE200FA79E6 /* ConfirmationVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE65E87723C48EE200FA79E6 /* ConfirmationVC.storyboard */; };
 		CE9B376123AFCB0600C26D20 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9B376023AFCB0600C26D20 /* NetworkClient.swift */; };
@@ -43,6 +46,9 @@
 		05FE2D71F6449EF296E3CE82 /* Pods-DumpHunt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DumpHunt.debug.xcconfig"; path = "Target Support Files/Pods-DumpHunt/Pods-DumpHunt.debug.xcconfig"; sourceTree = "<group>"; };
 		169E9F0EC17A9425E4271392 /* Pods_DumpHunt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DumpHunt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7248B284B09D7982EE469B3B /* Pods-DumpHunt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DumpHunt.release.xcconfig"; path = "Target Support Files/Pods-DumpHunt/Pods-DumpHunt.release.xcconfig"; sourceTree = "<group>"; };
+		CE13EF0325B3730F00CA5E20 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		CE13EF0725B3754700CA5E20 /* UIStoryboard+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Ext.swift"; sourceTree = "<group>"; };
+		CE13EF0C25B376D700CA5E20 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		CE31D9112387CEC200E6FF2D /* Охота на свалку.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Охота на свалку.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE31D9142387CEC200E6FF2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE31D9162387CEC200E6FF2D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,7 +63,7 @@
 		CE450ACD23BA582F00B3A844 /* ReportVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportVM.swift; sourceTree = "<group>"; };
 		CE450ACF23BA6B6D00B3A844 /* SourceSansPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.ttf"; sourceTree = "<group>"; };
 		CE5ED0BA239D26D5004D8897 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
-		CE5ED0BC239D28A9004D8897 /* Extensions+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UIImage.swift"; sourceTree = "<group>"; };
+		CE5ED0BC239D28A9004D8897 /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
 		CE65E87523C48ECF00FA79E6 /* ConfirmationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationVC.swift; sourceTree = "<group>"; };
 		CE65E87723C48EE200FA79E6 /* ConfirmationVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConfirmationVC.storyboard; sourceTree = "<group>"; };
 		CE9B376023AFCB0600C26D20 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
@@ -95,6 +101,16 @@
 				7248B284B09D7982EE469B3B /* Pods-DumpHunt.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		CE13EF0A25B3756700CA5E20 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CE5ED0BC239D28A9004D8897 /* UIImage+Ext.swift */,
+				CE13EF0725B3754700CA5E20 /* UIStoryboard+Ext.swift */,
+				CE13EF0C25B376D700CA5E20 /* UIViewController+Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		CE31D9082387CEC200E6FF2D = {
@@ -166,6 +182,7 @@
 				CEBC261F2387E68B00738CB7 /* ReportVC */,
 				CEBC26262387E87200738CB7 /* AboutProjectVC */,
 				CE31D92F2387D07C00E6FF2D /* Utils */,
+				CE13EF0A25B3756700CA5E20 /* Extensions */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -183,9 +200,9 @@
 			isa = PBXGroup;
 			children = (
 				CE450AD123BA6BA700B3A844 /* Fonts */,
+				CE13EF0325B3730F00CA5E20 /* Constants.swift */,
 				CE31D9302387D09100E6FF2D /* DesignModel.swift */,
 				CEB1B07B238851B60028D02C /* Utill.swift */,
-				CE5ED0BC239D28A9004D8897 /* Extensions+UIImage.swift */,
 				CE9B376223AFCB7A00C26D20 /* CommonTypes.swift */,
 			);
 			path = Utils;
@@ -437,9 +454,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE5ED0BD239D28A9004D8897 /* Extensions+UIImage.swift in Sources */,
+				CE5ED0BD239D28A9004D8897 /* UIImage+Ext.swift in Sources */,
+				CE13EF0425B3730F00CA5E20 /* Constants.swift in Sources */,
+				CE13EF0D25B376D700CA5E20 /* UIViewController+Ext.swift in Sources */,
 				CE9B376323AFCB7A00C26D20 /* CommonTypes.swift in Sources */,
 				CEBC26252387E86B00738CB7 /* AboutProjectVC.swift in Sources */,
+				CE13EF0825B3754700CA5E20 /* UIStoryboard+Ext.swift in Sources */,
 				CEBC26142387D2FD00738CB7 /* CreateReportVC.swift in Sources */,
 				CE31D9312387D09100E6FF2D /* DesignModel.swift in Sources */,
 				CE31D9372387D1FB00E6FF2D /* ReportListVC.swift in Sources */,
@@ -593,7 +613,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 3TX466DVBY;
 				INFOPLIST_FILE = "$(SRCROOT)/DumpHunt/SupportingFile/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -616,7 +636,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 3TX466DVBY;
 				INFOPLIST_FILE = "$(SRCROOT)/DumpHunt/SupportingFile/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;

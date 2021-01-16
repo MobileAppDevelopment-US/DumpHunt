@@ -87,7 +87,7 @@ final class ReportDetailsVC: BaseVC {
     private func reportContent() {
 
         let alert = UIAlertController(title: nil,
-                                      message: "Пожалуйста, укажите причину жалобы",
+                                      message: Constants.reasonСomplaint,
                                       preferredStyle: .alert)
         alert.addTextField { (textField) in
             textField.addTarget(self,
@@ -95,7 +95,7 @@ final class ReportDetailsVC: BaseVC {
                                 for: .editingChanged)
         }
         
-        let action = UIAlertAction(title: "Отправить",
+        let action = UIAlertAction(title: Constants.send,
                                    style: .default,
                                    handler: { [weak alert] (_) in
                                     guard let textField = alert?.textFields![0],
@@ -106,7 +106,7 @@ final class ReportDetailsVC: BaseVC {
         })
         
         alert.addAction(action)
-        alert.addAction(UIAlertAction(title: "Отменить", style: .cancel))
+        alert.addAction(UIAlertAction(title: Constants.cancel, style: .cancel))
         
         self.submitAction = action
         action.isEnabled = false
@@ -131,7 +131,7 @@ extension ReportDetailsVC {
                                                 guard let self = self else { return }
                                                 DispatchQueue.main.async {
                                                     self.hideSpinner()
-                                                    self.showSuccessAlert("Жалоба отправлена")
+                                                    self.showSuccessAlert(Constants.compleintSent)
                                                 }
             },
                                               failure:
@@ -147,7 +147,7 @@ extension ReportDetailsVC {
         let alert = UIAlertController(title: nil,
                                       message: message,
                                       preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok",
+        alert.addAction(UIAlertAction(title: Constants.ok,
                                       style: .default,
                                       handler: nil))
         self.present(alert, animated: true)
@@ -161,10 +161,7 @@ extension ReportDetailsVC {
     
     private func showGoogleMapsVC() {
         
-        let storyboard = UIStoryboard(name: "GoogleMapsVC", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(withIdentifier: "GoogleMapsVC") as? GoogleMapsVC else {
-            return
-        }
+        guard let vc = GoogleMapsVC.instanceFromStoryboard(.googleMapsVC) as? GoogleMapsVC else { return }
         vc.typeVC = .open
         vc.latitude = report?.latitude
         vc.longitude = report?.longitude

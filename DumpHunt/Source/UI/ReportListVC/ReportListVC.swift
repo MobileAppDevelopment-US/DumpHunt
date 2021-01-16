@@ -57,7 +57,8 @@ final class ReportListVC: BaseVC {
     
     private func configureTableView() {
         
-        tableView.register(UINib(nibName: "ReportListCell", bundle: nil), forCellReuseIdentifier: "ReportListCell")
+        tableView.register(UINib(nibName: ReportListCell.identifier, bundle: nil),
+                           forCellReuseIdentifier: ReportListCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
@@ -79,7 +80,7 @@ extension ReportListVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ReportListCell",
+        let cell = tableView.dequeueReusableCell(withIdentifier: ReportListCell.identifier,
                                                  for: indexPath) as! ReportListCell
         let report = reports[indexPath.row]
         cell.setReport(report)
@@ -99,10 +100,7 @@ extension ReportListVC {
     
     private func showReportDetailsVC(indexPath: IndexPath) {
         
-        let loginVCStoryboard = UIStoryboard(name: "ReportDetailsVC", bundle: nil)
-        guard let vc = loginVCStoryboard.instantiateViewController(withIdentifier: "ReportDetailsVC") as? ReportDetailsVC else {
-            return
-        }
+        guard let vc = ReportDetailsVC.instanceFromStoryboard(.reportDetailsVC) as? ReportDetailsVC else { return }
         vc.delegate = self
         vc.report = reports[indexPath.row]
         pushViewController(vc)
@@ -151,7 +149,7 @@ extension ReportListVC {
                                       message: message,
                                       preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "Ok",
+        alert.addAction(UIAlertAction(title: Constants.ok,
                                       style: .default,
                                       handler: { _ in
                                         if self.refreshControl.isRefreshing == true {
